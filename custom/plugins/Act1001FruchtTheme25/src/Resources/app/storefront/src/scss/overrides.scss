@@ -1,0 +1,29 @@
+/*
+Override variable defaults
+==================================================
+This file is used to override default SCSS variables from the Shopware Storefront or Bootstrap.
+
+Because of the !default flags, theme variable overrides have to be declared beforehand.
+https://getbootstrap.com/docs/4.0/getting-started/theming/#variable-defaults
+*/
+
+// Typography
+// $font-size-base: 1rem;
+
+$sw-background-color: #FBFAF6;
+$warning: #f2b538;
+$footer-bottom-color: #f0efe9;
+
+
+$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
+
+$font-weight-medium: 400;
+$font-weight-bold: 700;
+$font-weight-bolder: 800;
+$font-weight-extrabold: 800;
+
+
+@import 'abstract/variables/bootstrap';
+@import 'abstract/variables/shopware';

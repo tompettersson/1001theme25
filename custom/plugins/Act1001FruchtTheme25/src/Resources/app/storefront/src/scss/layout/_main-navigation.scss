@@ -1,0 +1,127 @@
+.nav-main {
+  margin-top: 10px;
+}
+
+.main-navigation-menu {
+  font-size: 15px;
+  margin-left: -27px;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: unset !important;
+  position: relative;
+  top: 0;
+  justify-content: space-between;
+  .navbar-nav {
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+.nav-link.main-navigation-link.home-link {
+  display: none;
+}
+
+.d-flex.align-items-center.justify-content-end.no-gutters.header-actions {
+  margin-top: 36px;
+}
+
+.main-navigation {
+  margin-top: 14px;
+}
+
+.main-navigation {
+  @if (feature("V6_5_0_0")) {
+    @extend .ms-4;
+  } @else {
+    @extend .ml-4;
+  }
+
+  &-menu {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    position: relative;
+    margin-bottom: -12px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .main-navigation-link {
+    border-bottom: 2px solid transparent;
+    padding: 6px 10px;
+    margin-right: 10px;
+
+    .main-navigation-link-text {
+      padding: 0;
+      border: none;
+      line-height: 1;
+      text-transform: uppercase;
+      position: relative;
+      font-size: 16px;
+      font-family: "Cera", Arial, Helvetica, sans-serif;
+      font-weight: 700;
+    }
+
+    &.active {
+      color: $sw-text-color;
+      padding: 6px 10px;
+      border-radius: 0;
+
+      .main-navigation-link-text {
+        border-bottom: 2px solid #272727;
+      }
+    }
+
+    &:hover {
+      color: $primary;
+      cursor: pointer;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .main-navigation {
+    display: none;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .main-navigation {
+    display: inherit;
+  }
+}
+
+.filter-panel-item .filter-panel-item-toggle {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.main-navigation-link.active .main-navigation-link-text {
+  border: none;
+}
+
+.is-ctl-product .offcanvas-close {
+  font-weight: 400;
+}
+
+.offcanvas {
+  background-color: #fff;
+}
+
+.is-ctl-product .offcanvas-close {
+  background-color: transparent;
+}
+
+.header-cart-count {
+  position: absolute;
+  top: 5px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  background: #9abc46;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  color: #fff;
+}

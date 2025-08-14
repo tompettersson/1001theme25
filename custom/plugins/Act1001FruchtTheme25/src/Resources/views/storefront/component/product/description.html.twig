@@ -1,0 +1,187 @@
+{% sw_extends '@Storefront/storefront/component/product/description.html.twig' %}
+
+{% block utilities_offcanvas_content %}
+    {% block component_product_description_container %}
+        <div class="product-detail-description tab-pane-container">
+            {% block component_product_description_content %}
+                <div class="product-detail-description">
+                    <div class="row">
+                        <div class="col-12 col-lg-7">
+                             <div class="product-detail-description-text"
+                                  itemprop="description">
+                                 {% if product.customFields.migration_1001Frucht_product_uniquecontent|trans|sw_sanitize %}
+                                 {{ product.customFields.migration_1001Frucht_product_uniquecontent|trans|sw_sanitize }}
+                                     {% else %}
+                                     {{ product.description|trans|sw_sanitize }}
+                                 {%  endif %}
+
+                                 {% if product.customFields.migration_1001Frucht_product_attr9|trans|sw_sanitize %}
+                                     <h2>Tipp</h2>
+                                     <p>{{ product.customFields.migration_1001Frucht_product_attr9|trans|sw_sanitize }}</p>
+                                 {% endif %}
+
+                             </div>
+                            <div class="infobox-container">
+                                <div class="infobox">
+                                    <h2>Hersteller</h2>
+                                    <p><b>1001 Frucht</b></p><p>Mohamad&nbsp;Ali Morady<br>
+                                        Wernberger Str. 4a<br>
+                                        93057 Regensburg</p>
+
+                                    <p>Telefon: 0941/20827550<br>
+                                        Mail: info@1001frucht.de</p>
+                                </div>
+                                <div class="infobox">
+                                    <h2>Lagerung</h2>
+                                    <p>
+                                        Bitte öffnen Sie Ihre Bestellung unmittelbar nach dem Erhalt und überprüfen Sie diese auf Vollständigkeit. Anschließend öffnen Sie jedes Produkt, überprüfen Sie die Qualität und lagern Sie es ordnungsgemäß in luftdichten Behältern aus Tupperware und Glas kühl (bei Datteln 4-6 Grad).
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-lg-5">
+                            {% if product.customFields.migration_1001Frucht_product_kj %}
+
+                                <table itemprop="nutrition" class="table-ingredients small-edition" style="margin-top: 1rem;">
+                                <thead>
+                                <tr>
+                                    <th><span class="nutrition-title--label">Durchschnittliche Nährwerte</span></th>
+                                    <th><span class="nutrition-title--value">pro 100 g</span></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><span class="nutrition--label nutrition--energy">Brennwert (in kj/kcal)</span></td>
+                                    <td><span class="nutrition--value nutrition--energy">{{ product.customFields.migration_1001Frucht_product_kj }} / {{ product.customFields.migration_1001Frucht_product_kcal }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="nutrition--label nutrition--fat">Fett</span></td>
+                                    <td><span class="nutrition--value nutrition--fat">{{ product.customFields.migration_1001Frucht_product_fett }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="nutrition--label nutrition--saturates">&nbsp; &nbsp;davon gesättigte
+Fettsäuren</span></td>
+                                    <td><span class="nutrition--value nutrition--saturates">{{ product.customFields.migration_1001Frucht_product_ges_fettsaeuren }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="nutrition--label nutrition--carbohydrate">Kohlenhydrate</span></td>
+                                    <td><span class="nutrition--value nutrition--carbohydrate">{{ product.customFields.migration_1001Frucht_product_kohlenhydrate }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="nutrition--label nutrition--sugars">&nbsp; &nbsp;davon Zucker</span></td>
+                                    <td><span class="nutrition--value nutrition--sugars">{{ product.customFields.migration_1001Frucht_product_nw_zucker }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="nutrition--label nutrition--fibre">Ballaststoffe</span></td>
+                                    <td><span class="nutrition--value nutrition--fibre">{{ product.customFields.migration_1001Frucht_product_ballaststoffe }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="nutrition--label nutrition--protein">Eiweiß</span></td>
+                                    <td><span class="nutrition--value nutrition--protein">{{ product.customFields.migration_1001Frucht_product_eiweiss }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="nutrition--label nutrition--salt">Salz</span></td>
+                                    <td><span class="nutrition--value nutrition--salt">{{ product.customFields.migration_1001Frucht_product_salzgehalt }}</span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            {% endif %}
+                            {% if product.customFields.migration_1001Frucht_product_attr1 %}
+                                <h4>Zutaten</h4>
+                                <p>{{  product.customFields.migration_1001Frucht_product_attr1 }}</p>
+                            {% endif %}
+                            
+                            {# Allergenhinweis nur anzeigen, wenn Produkt nicht Vitamin/Magnesium enthält #}
+                            {% set isVitamin = false %}
+                            {% if product.translated.name|lower matches '/vitamin|magnesium/' %}
+                                {% set isVitamin = true %}
+                            {% endif %}
+
+                            {% if not isVitamin %}
+                                <h4>Allergenhinweis</h4>
+                                <p>
+                                    Kann Spuren von Gluten, Soja, Nüssen, Mandeln, Erdnüssen, Milch (Laktose), Sesam und Schwefeldioxid (Sulfite) enthalten.
+                                </p>
+                            {% endif %}
+
+                            {% if product.customFields.migration_1001Frucht_product_attr12|trans|sw_sanitize %}
+
+
+
+                            {% endif %}
+                            {% set map = {
+                                'Israel': 'herkunft-israel.jpg',
+                                'U.S.A': 'herkunft-usa.jpg',
+                                'Australien': 'herkunft-australien.jpg',
+                                'Syrien': 'herkunft-syrien.jpg',
+                                'Österreich': 'herkunft-oesterreich.jpg',
+                                'Indien': 'herkunft-indien.jpg',
+                                'Marokko': 'herkunft-marokko.jpg',
+                                'Kolumbien': 'herkunft-kolumbien.jpg',
+                                'Schweiz': 'herkunft-schweiz.jpg',
+                                'Thailand': 'herkunft-thailand.jpg',
+                                'Griechenland': 'herkunft-griechenland.jpg',
+                                'Ägypten': 'herkunft-aegypten.jpg',
+                                'Regensburg': 'herkunft-deutschland.jpg',
+                                'Pakistan': 'herkunft-pakistan.jpg',
+                                'Bulgarien': 'herkunft-bulgarien.jpg',
+                                'Türkei': 'herkunft-tuerkei.jpg',
+                                'China': 'herkunft-china.jpg',
+                                'Tunesien': 'herkunft-tunesien.jpg',
+                                'Deutschland': 'herkunft-deutschland.jpg',
+                                'Philippinen': 'herkunft-philippinen.jpg',
+                                'Kolumbien': 'herkunft-kolumbien.jpg',
+                                'Tibet': 'herkunft-tibet.jpg',
+                                'Sri Lanka': 'herkunft-sri-lanka.jpg',
+                                'Brasilien': 'herkunft-brasilien.jpg', 
+                                'Frankreich': 'herkunft-frankreich.jpg',
+                                'Ungarn': 'herkunft-ungarn.jpg',
+                                'Spanien': 'herkunft-spanien.jpg',
+                                'Äthiopien': 'herkunft-aethiopien.jpg',
+                                'Peru': 'herkunft-peru.jpg',
+                                'Mexiko': 'herkunft-mexiko.jpg',
+                                'Afghanistan': 'herkunft-afghanistan.jpg',
+                                'Vietnam': 'herkunft-vietnam.jpg',
+                                'Italien': 'herkunft-italien.jpg',
+                                'Niederlande': 'herkunft-niederlande.jpg',
+                                'Südafrika': 'herkunft-suedafrika.jpg',
+                                'Iran': 'herkunft-iran.jpg',
+                                'Japan': 'herkunft-japan.jpg',
+                                'Guatemala': 'herkunft-guatemala.jpg',
+                                'Bolivien': 'herkunft-bolivien.jpg',
+                                'Großbritannien': 'herkunft-grossbritannien.jpg',
+                                'Burkina Faso': 'herkunft-burkina-faso.jpg',
+                                'Lesotho': 'herkunft-lesotho.jpg',
+                                'EU': 'herkunft-eu.jpg',
+                                'Diverse': 'herkunft-weltkarte.jpg',
+                                'Polen': 'herkunft-polen.jpg',
+                                'Kanada': 'herkunft-kanada.jpg',
+                                'Indonesien': 'herkunft-indonesien.jpg',
+                            } %}
+
+                            {% for property in product.properties %}
+
+                                {% if property.group.name == 'Bezugsquelle' %}
+                                    <h2 class="headlinewithline">Herkunft: {{ property.name }}</h2>
+                                    <p class="max-w-sm">{{ product.customFields.migration_1001Frucht_product_attr13|trans|sw_sanitize }}</p>
+                                    <img class="origin-map mappi" src="/media/maps/{{ map[property.name] }}" alt="{{ property.name }}">
+                                {% endif %}
+
+                            {% endfor %}
+
+
+                        </div>
+                    </div>
+                    <div class="known">
+                        <div class="container">
+                            <img src="/media/d8/27/9c/1708444427/bekanntaus.gif" alt="Bekannt aus ...">
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,149 @@
+{#
+
+Notice for plugins and theme developer:
+
+This template can be extended over sw_extends.
+The blocks from the templates in the /includes folder can be overwritten directly in this template
+
+merge 16.11.2020
+#}
+{% use '@Framework/documents/includes/loop.html.twig' %}
+{% use '@Framework/documents/includes/footer.html.twig' %}
+{% use '@Framework/documents/includes/summary.html.twig' %}
+{% use '@Framework/documents/includes/payment_shipping.html.twig' %}
+{% use '@Framework/documents/includes/comment.html.twig' %}
+{% use '@Framework/documents/includes/shipping_address.html.twig' %}
+
+{% block document_base %}
+	{# @var order \Shopware\Core\Checkout\Order\OrderEntity #}
+	{# @var config \Shopware\Core\Checkout\Document\DocumentConfiguration #}
+	{# @var context \Shopware\Core\Framework\Context #}
+
+	{# @var customer \Shopware\Core\Checkout\Order\Aggregate\OrderCustomer\OrderCustomerEntity #}
+	{% set customer = order.orderCustomer %}
+
+	{% set total = order.lineItems.count %}
+
+	{# @var billingAddress \Shopware\Core\Checkout\Order\Aggregate\OrderAddress\OrderAddressEntity #}
+	{% set billingAddress = order.addresses.get(order.billingAddressId) %}
+
+	{% set currencyIsoCode = order.currency.isoCode %}
+
+	{% set locale = order.language.locale.code %}
+	{% set languageId = order.language.id %}
+
+	{% set nestedLineItems = order.nestedLineItems %}
+
+		{% if config.itemsPerPage|intval === 0 or config.itemsPerPage <= 0 %}
+		{% set itemsPerPage = 10 %}
+	{% else %}
+		{% set itemsPerPage = config.itemsPerPage|intval %}
+	{% endif %}
+
+	<!DOCTYPE html>
+	<html>
+		<head>
+			{% block document_head %}
+				<meta
+				http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+				{#{% if config.title %}#}
+				<title>
+					{% block document_title_tag %}{% endblock %}
+				</title>
+				{#{% endif %}#}
+
+				{% block document_font_links %}
+					<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+				{% endblock %}
+
+				{% if config.pageOrientation == 'landscape' %}
+					{% sw_include '@Framework/documents/style_base_landscape.css.twig' %}
+				{% else %}
+					{% sw_include '@Framework/documents/style_base_portrait.css.twig' %}
+				{% endif %}
+			{% endblock %}
+		</head>
+
+		<body>
+			{% block logo %}
+				{# To include a header or footer on every site, these elements have to be defined before the content #}
+
+				<header style="width: 100% !important;">
+					{% block document_header %}
+						{% if config.logo %}
+							<div style="width: 100% !important; margin: 10px 0;">
+								<div style="width: 100% !important; text-align: center;">
+									<img src="{{ config.logo.url }}" alt="Logo" width="175">
+								</div>
+							</div>
+						{% endif %}
+					{% endblock %}
+				</header>
+
+			{% endblock %}
+
+			{% block footer %}
+				{% if config.displayFooter %}
+					<footer style="position: fixed; bottom: -9mm; width: 100%; left: 0;">
+						<table border="0" style="width: 100%; table-layout: fixed;">
+							<tbody>
+								<tr>
+									<td style="width: 100%;text-align: center;vertical-align: middle; font-size: 12px;">1001 Frucht - Wernberger Str. 4a -93057 Regensburg - Deutschland<br/>Sparkasse Regensburg - BIC: BYLADEM1RBG - IBAN: DE52 7505 0000 0008 8058 89<br/>Gerichtsstanderfüllungsort ist Regensburg - USt-IdNr.244/252/40559 - Geschäftsinhaber: Morady<br/>DE-ÖKO-037 - Gelieferte Ware bleibt bis zur vollständigen Bezahlung unser Eigentum</td>
+								</tr>
+							</tbody>
+						</table>
+					</footer>
+				{% endif %}
+			{% endblock %}
+
+
+			{% block document_body %}
+				{% set position = 1 %}
+				{% set prefix = '' %}
+				{% set level = 0 %}
+
+				{% for lineItem in nestedLineItems %}
+					{{ block('loop') }}
+
+					{% set position = position + 1 %}
+				{% endfor %}
+
+				{{ block('summary') }}
+
+				{% block payment_shipping %}
+					{% block document_payment_shipping %}
+						<div class="payment-shipping-container">
+							{% block document_payment_shipping_inner %}
+								{% block document_payment %}
+									{{ 'document.paymentShippingInfo.paymentMethod'|trans({'%paymentMethod%': order.transactions.last.paymentMethod.name})|sw_sanitize }}
+									|
+									{{ 'document.paymentShippingInfo.shippingMethod'|trans({'%shippingMethod%': order.deliveries.first.shippingMethod.name})|sw_sanitize }}<br><br>
+								{% endblock %}
+								{% block document_shipping %}{% endblock %}
+								{% block document_payment_shipping_additional %}
+									{{ 'document.paymentShippingInfo.additionalInfo'|trans|sw_sanitize }}<br>
+								{% endblock %}
+								{% block document_payment_shipping_service_date_notice %}
+									<b>{{ 'document.serviceDateNotice'|trans|sw_sanitize }}</b><br>
+								{% endblock %}
+								{% block document_intra_community %}
+									{% if config.intraCommunityDelivery %}
+										{{ 'document.intraCommunity'|trans|sw_sanitize }}<br>
+									{% endif %}
+								{% endblock %}
+
+								<p style="line-height: 1 !important; margin: 0 !important; padding: 0 !important; display: block !important;">Hinweis: Bei unseren Waren handelt es sich um leicht verderbliche Lebensmittel und sind somit von dem 14-tägigen Widerrufsrecht ausgeschlossen. Aus diesem Grund bitten wir Sie, unsere Produkte unverzüglich nach Erhalt zu öffnen und zu prüfen. Eine spätere Reklamation ist ausgeschlossen. bitte beachten Sie stets die Lagerungshinweise auf unserer Website.</p>
+
+
+							{% endblock %}
+						</div>
+					{% endblock %}
+				{% endblock %}
+
+				{{ block('comment')  }}
+
+				{{ block('shipping_address')  }}
+			{% endblock %}
+		</body>
+	</html>
+{% endblock %}

@@ -1,0 +1,205 @@
+.filter-actions {
+    font-size: 0;
+
+    > a {
+        @if (feature('V6_5_0_0')) {
+            @extend .m-2;
+        } @else {
+            @extend .mr-4;
+        }
+    }
+}
+
+.module-statistic {
+    .filter-container {
+        @extend .mt-0;
+        max-width: 440px;
+
+        .filter-label {
+            margin-bottom: 8px;
+        }
+
+        .filter-groupBy {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        @if (feature('V6_5_0_0')) {
+            .row {
+                margin: 0;
+            }
+
+            > .row:not(.panel-content-filter) {
+                margin: 0 -4px;
+
+                .form-group {
+                    @include make-col(6);
+                    @extend .me-0;
+
+                    padding: 0 4px;
+                }
+            }
+        } @else {
+            .form-row {
+                margin: 0;
+            }
+
+            > .form-row:not(.panel-content-filter) {
+                margin: 0 -12px;
+
+                .form-group {
+                    @include make-col(6);
+                    @extend .mr-0;
+
+                    padding: 0 12px;
+                }
+            }
+        }
+
+        > .block {
+            @extend .mt-0;
+
+            margin-bottom: 20px;
+        }
+
+        > h5 {
+            @extend .d-none;
+        }
+
+        select,
+        .flatpickr-input {
+            max-width: 100%;
+        }
+
+        .flatpickr-input {
+            margin-right: 0;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+    }
+
+    @if (feature('V6_5_0_0')) {
+        .flatpickr-input {
+            + .input-group-text {
+                min-width: auto;
+                right: 12px;
+                top: -1px;
+                border: 0;
+                background: transparent;
+                padding: 0;
+            }
+        }
+    } @else {
+        .flatpickr-input + .input-group-append {
+            min-width: auto;
+            right: 12px;
+            top: -1px;
+
+            > .input-group-text {
+                border: 0;
+                background: transparent;
+                padding: 0;
+            }
+        }
+    }
+
+
+    select {
+        @if (feature('V6_5_0_0')) {
+            @extend .form-select;
+        } @else {
+            @extend .custom-select;
+        }
+
+    }
+
+    label {
+        @extend .mt-0;
+
+        display: block;
+    }
+
+    h5 {
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .apexcharts-legend-marker {
+        border-radius: 2px !important;
+        width: 16px !important;
+        height: 16px !important;
+        margin-right: 8px;
+
+        @if (not feature('V6_5_0_0')) {
+            &::after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 16px;
+                height: 16px;
+                content: '';
+                background: no-repeat 50% / #{$custom-control-indicator-bg-size};
+                background-image: $custom-checkbox-indicator-icon-checked;
+            }
+        }
+    }
+
+    .apexcharts-legend.position-bottom {
+        .apexcharts-legend-series {
+            margin: 0 24px 0 0 !important;
+            align-items: flex-end !important;
+        }
+    }
+
+    .b2b--grid-container {
+        background: transparent;
+        border: none;
+    }
+
+    .b2b--component-pagination {
+        border-top-color: transparent;
+    }
+
+    .grid-form {
+        gap: 60px;
+
+        .grid-form-filter {
+            .input-group-text .icon {
+                color: $icon-base-color;
+                width: 18px;
+            }
+
+            .form-group {
+                width: 100%;
+            }
+
+            .statistics-label-filter {
+                margin-bottom: 24px;
+            }
+
+            .text-left {
+                margin-top: 0;
+            }
+        }
+    }
+
+    .grid-form-grid-table {
+        .action--export {
+            color: $gray-900;
+            border-color: $gray-900;
+
+            &:nth-of-type(1) {
+                margin-right: 4px;
+            }
+        }
+    }
+}
+
+.panel-content-filter > .form-group {
+    width: 100%;
+}

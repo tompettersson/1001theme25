@@ -1,0 +1,30 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/tabs.html.twig' %}
+
+{% block page_product_detail_tabs_navigation %}
+{% endblock %}
+
+{% block page_product_detail_tabs_content_description %}
+    {% sw_include '@Storefront/storefront/page/product-detail/description.html.twig' %}
+
+    {% block page_product_detail_cross_selling %}
+        {% if page.crossSellings.elements is defined and page.crossSellings.elements|filter(item => item.total > 0)|length > 0 %}
+            <div class="product-detail-tabs product-detail-cross-selling">
+                <div class="container">
+                    {% sw_include '@Storefront/storefront/page/product-detail/cross-selling/tabs.html.twig' with {
+                        crossSellings: page.crossSellings
+                    } %}
+                </div>
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {# Reviews #}
+    <div class="reviews-wrapper" id="review-tab-pane">
+        <h2 class="headlinewithline">Bewertungen</h2>
+        {% sw_include '@Storefront/storefront/page/product-detail/review/review.html.twig' with {'reviews': page.reviews} %}
+    </div>
+
+
+    {% sw_include '@Storefront/storefront/page/product-detail/act-extratab1.html.twig' %}
+
+{% endblock %}

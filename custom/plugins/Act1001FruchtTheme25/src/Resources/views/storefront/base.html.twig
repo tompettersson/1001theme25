@@ -1,0 +1,43 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_body_classes %}{% set actclass = app.request.attributes.get('sw-original-request-uri')|split('/') %}{{ parent() }}{% if actclass[1] != '' %} {{ actclass[1] }}{% endif %}
+
+{% endblock %}
+
+{% if feature('V6_5_0_0') %}
+    {% set formRowClass = 'row' %}
+{% else %}
+    {% set formRowClass = 'form-row' %}
+{% endif %}
+
+{% block base_navigation %}
+{% endblock %}
+
+{% block base_main_inner %}
+    {{ block('base_main_container') }}
+{% endblock %}
+
+{% block base_header_inner %}
+    {% sw_include '@Storefront/storefront/layout/header/header.html.twig' %}
+
+{% endblock %}
+
+{% set tsConfig = config('trustedShopsApp.config') %}
+{% set tsChannelId = context.salesChannel.id ?? null %}
+{% set expectedMapping = [] %}
+
+{% foreach tsConfig.mappedChannels as mappedChannel %}
+    {% set expectedMapping = expectedMapping|merge({ (mappedChannel.salesChannelRef): mappedChannel.eTrustedChannelRef}) %}
+{% endforeach %}
+
+{% block base_body_script %}
+    {{ parent() }}
+
+    {% if tsConfig[tsChannelId].trustbadgeConfiguration is defined and expectedMapping[tsChannelId] === tsConfig[tsChannelId].trustbadgeConfiguration.eTrustedChannelRef %}
+        {% set tsTrustBadgeConfiguration = tsConfig[tsChannelId].trustbadgeConfiguration.children %}
+
+        {% sw_include '@Storefront/storefront/includes/script-assembler.html.twig' with {
+            scriptConfig: tsTrustBadgeConfiguration[0]
+        } %}
+    {% endif %}
+{% endblock %}

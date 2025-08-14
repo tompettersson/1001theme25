@@ -1,0 +1,34 @@
+{% sw_extends '@Storefront/storefront/layout/navbar/navbar.html.twig' %}
+
+{% block layout_navbar_menu_items %}
+    {% for treeItem in header.navigation.tree %}
+        {% set category = treeItem.category %}
+        {% set id = category.id %}
+        {% set name = category.translated.name %}
+        {# Mega-Dropdown deaktivieren durch hasChildren = false #}
+        {% set hasChildren = false %}
+
+        {% block layout_navbar_menu_item %}
+            {% if category.type == 'folder' %}
+                <li class="nav-item nav-item-{{ id }}">
+                    <a class="nav-link nav-item-{{ id }}-link root main-navigation-link p-2"
+                       href="#"
+                       itemprop="url"
+                       title="{{ name }}">
+                        <span itemprop="name" class="main-navigation-link-text">{{ name }}</span>
+                    </a>
+                </li>
+            {% else %}
+                <li class="nav-item nav-item-{{ id }}">
+                    <a class="nav-link nav-item-{{ id }}-link root main-navigation-link p-2"
+                       href="{{ seoUrl('frontend.navigation.page', { navigationId: category.id }) }}"
+                       {% if category_linknewtab(category) %}target="_blank"{% endif %}
+                       itemprop="url"
+                       title="{{ name }}">
+                        <span itemprop="name" class="main-navigation-link-text">{{ name }}</span>
+                    </a>
+                </li>
+            {% endif %}
+        {% endblock %}
+    {% endfor %}
+{% endblock %}

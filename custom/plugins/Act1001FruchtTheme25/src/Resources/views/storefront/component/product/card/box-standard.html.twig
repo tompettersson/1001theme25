@@ -1,0 +1,118 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
+
+{% block component_product_box_content %}
+    {% if product.customFields.migration_1001Frucht_product_bioprodukt %}
+        <div class="bio-produkt" style="position: absolute; top: 8px; right: 15px ; width: 52px; z-index: 2">
+            <img style="height: 39px;" alt="BIO - DE-ÖKO-037" src="/bundles/act1001fruchttheme/svg/Organic-Logo.svg?16679180384052">
+            <span style="font-size: 9px;">DE-ÖKO-037</span>
+        </div>
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+
+{% block component_product_box_description %}
+    <div class="product-description">
+    {#        {{ dump(product ) }}#}
+    {% if product.customFields.migration_1001Frucht_product_bullet_point_2 %}
+        {% if product.customFields.migration_1001Frucht_product_bullet_point_1 %}
+            {{ product.customFields.migration_1001Frucht_product_bullet_point_1|striptags|raw }}.
+        {% endif %}
+        {% if product.customFields.migration_1001Frucht_product_bullet_point_2 %}
+            {{ product.customFields.migration_1001Frucht_product_bullet_point_2|striptags|raw }}.
+        {% endif %}
+        {% if product.customFields.migration_1001Frucht_product_bullet_point_3 %}
+            {{ product.customFields.migration_1001Frucht_product_bullet_point_3|striptags|raw }}.
+        {% endif %}
+        {% if product.customFields.migration_1001Frucht_product_bullet_point_4 %}
+            {{ product.customFields.migration_1001Frucht_product_bullet_point_4|striptags|raw }}.
+        {% endif %}
+    {% elseif product.description %}
+        {{ product.description|striptags|raw }}
+    {% else %}
+        {{ product.migration_1001Frucht_product_uniquecontent|trans|striptags|raw }}
+    {% endif %}
+    </div>
+
+    {# Include configurator form #}
+    {% block component_product_box_description_maxia_listing_variants %}
+        {% set baseConfig = context.extensions.maxiaListingVariants %}
+
+        {% if baseConfig.pluginEnabled and baseConfig.position == 'below_description' %}
+            {% if product.extensions.maxiaListingVariants is defined and product.extensions.maxiaListingVariants.options|length > 0 %}
+                {% block component_product_box_description_maxia_listing_variants_include %}
+                    {% sw_include '@Storefront/storefront/plugins/maxia_listing_variants/configurator.html.twig' %}
+                {% endblock %}
+            {% else %}
+                {% block component_product_box_description_maxia_listing_variants_spacer %}
+                    <div class="maxia-listing-variants-spacer"></div>
+                {% endblock %}
+            {% endif %}
+        {% endif %}
+    {% endblock %}
+{% endblock %}
+
+{% block component_product_box_rating %}
+    {# Include configurator form #}
+    {% block component_product_box_rating_maxia_listing_variants %}
+        {% set baseConfig = context.extensions.maxiaListingVariants %}
+
+        {% if baseConfig.pluginEnabled and baseConfig.position == 'below_image' %}
+            {% if product.extensions.maxiaListingVariants is defined and product.extensions.maxiaListingVariants.options|length > 0 %}
+                {% block component_product_box_rating_maxia_listing_variants_include %}
+                    {% sw_include '@Storefront/storefront/plugins/maxia_listing_variants/configurator.html.twig' %}
+                {% endblock %}
+            {% else %}
+                {% block component_product_box_rating_maxia_listing_variants_spacer %}
+                    <div class="maxia-listing-variants-spacer"></div>
+                {% endblock %}
+            {% endif %}
+        {% endif %}
+    {% endblock %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block component_product_box_price %}
+    {{ parent() }}
+
+    {# Include configurator form #}
+    {% block component_product_box_price_maxia_listing_variants %}
+        {% set baseConfig = context.extensions.maxiaListingVariants %}
+
+        {% if baseConfig.pluginEnabled and baseConfig.position == 'below_price' %}
+            {% if product.extensions.maxiaListingVariants is defined and product.extensions.maxiaListingVariants.options|length > 0 %}
+                {% block component_product_box_price_maxia_listing_variants_include %}
+                    {% sw_include '@Storefront/storefront/plugins/maxia_listing_variants/configurator.html.twig' %}
+                {% endblock %}
+            {% else %}
+                {% block component_product_box_price_maxia_listing_variants_spacer %}
+                    <div class="maxia-listing-variants-spacer"></div>
+                {% endblock %}
+            {% endif %}
+        {% endif %}
+    {% endblock %}
+
+    {# Include delivery info #}
+    {% block component_product_box_price_maxia_listing_variants_delivery_include %}
+        {% sw_include '@Storefront/storefront/plugins/maxia_listing_variants/delivery-informations.html.twig' %}
+    {% endblock %}
+{% endblock %}
+
+{% block component_product_box_variant_characteristics %}
+    {# Hide if plugin is active #}
+    {% if not context.extensions.maxiaListingVariants.pluginEnabled %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{# SwpPriceOnRequestSix compatibility #}
+{% block component_product_box_action_swp_priceonrequestsix_contact_button_state1 %}
+    {{ parent() }}
+
+    {% if product.extensions.maxiaListingVariants is defined %}
+        {% sw_include '@Storefront/storefront/plugins/maxia_listing_variants/config.html.twig' %}
+    {% endif %}
+{% endblock %}
+
+
+

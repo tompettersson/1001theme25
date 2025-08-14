@@ -1,0 +1,146 @@
+/*
+CMS elements
+==============================================
+General styling for cms elements
+*/
+
+.cms-element-image-gallery {
+    &.has-vertical-alignment {
+        display: block;
+        height: 100%;
+    }
+}
+
+.cms-element-text {
+    font-size: 16px;
+    height: 100%;
+}
+
+.cms-element-product-slider {
+    .product-slider-controls-prev {
+        left: -20px;
+    }
+
+    .product-slider-controls-next {
+        right: -20px;
+    }
+}
+
+.cms-element-product-listing {
+    .cms-listing-row {
+        padding-bottom: 44px;
+    }
+
+    &-actions {
+        padding-bottom: $spacer-20;
+        border-bottom: $hr-border-width solid $hr-border-color;
+        margin-bottom: 0;
+
+        &:empty {
+            border-bottom: 0;
+        }
+    }
+
+    .b2b--ajax-panel {
+        @extend .mt-0;
+    }
+}
+
+.cms-element-product-listing-view-mode {
+    float: left;
+
+    .border-primary {
+        line-height: 30px;
+
+        @if (feature('V6_5_0_0')) {
+            border-color: $form-select-border-color !important;
+        }
+
+        @else {
+            border-color: $custom-select-border-color !important;
+        }
+
+        .icon {
+            width: 18px;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            border-color: $primary;
+            box-shadow: none;
+        }
+    }
+}
+
+.cms-element-sidebar-filter {
+    padding-top: $spacer-20;
+    padding-bottom: $spacer-20;
+    border-top: $hr-border-width solid $hr-border-color;
+}
+
+.cms-block-sidebar-filter+.cms-block-product-listing {
+    .cms-element-product-listing-actions {
+        display: none;
+        padding-top: 0;
+    }
+}
+
+@include media-breakpoint-down(if(feature('V6_5_0_0'), lg, md)) {
+    .cms-element-product-listing-actions {
+        .sorting {
+            margin-top: 0;
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .cms-element-product-slider {
+        .product-slider-controls-prev {
+            left: 0;
+        }
+
+        .product-slider-controls-next {
+            right: 0;
+        }
+    }
+
+    .cms-element-product-listing {
+        .cms-listing-row {
+            padding-bottom: 54px;
+        }
+    }
+
+    .is-act-search {
+        .cms-element-product-listing-actions {
+            padding-top: $spacer-20;
+        }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .cms-element-sidebar-filter {
+        padding-top: 0;
+        border-top: none;
+    }
+
+    .cms-element-product-listing-actions {
+        border-bottom: none;
+
+        .sorting {
+            min-width: 280px;
+        }
+    }
+}
+
+.custom-select, .swag-customized-products .swag-customized-products__item .swag-customized-products__type-select .swag-customized-products-form-control, .is--b2b-acl-controller-b2bbudget select, .module-statistic select {
+    border-radius: 0;
+    border: 1px solid #78716c;
+    background: url('/media/3a/fe/db/1695037925/chevron-down.svg') no-repeat right 12px center/1.2rem;
+    background-color: transparent;
+    -o-appearance: none;
+    -ms-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

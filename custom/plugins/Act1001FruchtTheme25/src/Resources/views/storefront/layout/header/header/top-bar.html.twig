@@ -1,0 +1,71 @@
+{% sw_extends '@Storefront/storefront/layout/header/top-bar.html.twig' %}
+
+{% block layout_header_top_bar %}
+	<div class="top-bar">
+		<div class="container">
+			<nav class="top-bar-nav row">
+				<div class="col-3 d-none d-xl-block">
+					{% block layout_header_top_bar_currency %}
+						{{ parent() }}
+						<img style="height: 35px;" src="{{ asset('bundles/act1001fruchttheme/svg/Organic-Logo.svg', 'asset') }}">
+						<a target="_blank" class="ts-header" href="https://www.trustedshops.de/bewertung/info_X15094F1E0C5902227551095C5F74228E.html" rel="nofollow noopener">
+							<span class="product--rating">
+								<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="#fbbe17" classname="w-6 h-6" style="width:12px; height: 12px; display:inline-block;">
+									<path fillrule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" cliprule="evenodd"/>
+								</svg>
+								<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="#fbbe17" classname="w-6 h-6" style="width:12px; height: 12px; display:inline-block;">
+									<path fillrule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" cliprule="evenodd"/>
+								</svg>
+								<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="#fbbe17" classname="w-6 h-6" style="width:12px; height: 12px; display:inline-block;">
+									<path fillrule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" cliprule="evenodd"/>
+								</svg>
+								<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="#fbbe17" classname="w-6 h-6" style="width:12px; height: 12px; display:inline-block;">
+									<path fillrule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" cliprule="evenodd"/>
+								</svg>
+								<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="#fbbe17" classname="w-6 h-6" style="width:12px; height: 12px; display:inline-block;">
+									<path fillrule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" cliprule="evenodd"/>
+								</svg>
+
+							</span>
+							Trusted Shops</a>
+					{% endblock %}
+
+					{% block layout_header_top_bar_language %}
+						{{ parent() }}
+					{% endblock %}
+				</div>
+				<div class="col-12 col-xl-6">
+					{% block layout_header_top_message %}
+						<ul class="top-bar-mininav">
+							<li>
+								<a href="/informationen/haeufige-fragen/">Service</a>
+							</li>
+							<li>
+								<a href="/ueber-uns/">Über uns</a>
+							</li>
+
+							<li>
+								<a href="/1001frucht/newsletter/">Newsletter</a>
+							</li>
+							<li>
+								<a href="/blog/">Magazin</a>
+							</li>
+						</ul>
+
+					{% endblock %}
+				</div>
+				<div class="col-5 col-xl-3 d-none d-xl-block">
+					<a href="/informationen/zahlarten/" class="header-payment-icons">
+						<img class="payment-icon klarna" src="/media/a7/38/d5/1706878352/payment-klarna.svg"/>
+						<img class="payment-icon visa" src="/media/63/7c/11/1706878352/payment-visa.svg"/>
+						<img class="payment-icon mastercard" src="/media/72/10/04/1706878352/payment-mastercard.svg"/>
+						<img class="payment-icon applepay" src="/media/a2/d7/f4/1706878352/payment-applepay.svg"/>
+						<img class="payment-icon paypal" src="/media/62/ef/62/1706878352/payment-paypal.svg"/>
+						<img class="payment-icon amex" src="/media/af/14/09/1706878352/payment-amex.svg"/>
+					</a>
+				</div>
+
+			</nav>
+		</div>
+	</div>
+{% endblock %}

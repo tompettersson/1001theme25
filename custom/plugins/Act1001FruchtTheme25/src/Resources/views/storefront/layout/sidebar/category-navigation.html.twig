@@ -1,0 +1,17 @@
+<div class="category-navigation-top">
+
+            {% set category_id = activeResult._uniqueIdentifier %}
+
+                {% for item in navigationTree[category_id].children  %}
+                {% block layout_navigation_categories_list_entry %}
+
+                                    <a class="category-navigation-top-link"
+                                        href="{{ category_url(item.category) }}"
+                                        {% if category_linknewtab(item.category) %}target="_blank"{% endif %}>
+                                        {% block layout_navigation_categories_link_children_name %}
+                                            {{ item.category.translated.name }}
+                                        {% endblock %}
+                                    </a>
+                {% endblock %}
+            {% endfor %}
+        </div>

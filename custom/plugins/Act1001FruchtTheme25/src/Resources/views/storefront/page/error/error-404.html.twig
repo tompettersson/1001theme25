@@ -1,0 +1,23 @@
+{% sw_extends '@Storefront/storefront/page/error/error-404.html.twig' %}
+
+{% block not_found_error_content %}
+    <div class="container-404 container">
+        <h1>CUSTOM 404 TEST - Template wird verwendet!</h1>
+        <div class="content-bg">
+            <img src="/media/8b/e8/40/1686925089/404.png"
+                 alt="{{ "general.404ErrorPageHeader"|trans|striptags }}"
+                 class="img-fluid w-100"/>
+        </div>
+        <div class="content">
+            <img src="/media/8b/e8/40/1686925089/404.png"
+                 alt="{{ "general.404ErrorPageHeader"|trans|striptags }}"
+                 class="img-fluid w-100"/>
+            <h1 class="text-center">{{ "general.404ErrorPageHeader"|trans|sw_sanitize }}</h1>
+            <p class="text-center w-60-l">{{ "general.404ErrorDescription"|trans|sw_sanitize }}</p>
+
+            {% block not_found_error_return %}
+                {{ parent() }}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

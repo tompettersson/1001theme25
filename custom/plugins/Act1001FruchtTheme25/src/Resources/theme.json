@@ -1,0 +1,83 @@
+{
+  "name": "Act1001FruchtTheme25",
+  "author": "Actualize",
+  "views": [
+     "@Storefront",
+     "@Plugins",
+     "@Act1001FruchtTheme25",
+     "@SwagCustomizedProducts",
+     "@SwagPayPal",
+     "@SwagAmazonPay",
+     "@SwagCmsExtensions",
+     "@SwagB2bPlatform"
+  ],
+  "style": [
+    "app/storefront/src/scss/overrides.scss",
+    "@Storefront",
+    "app/storefront/src/scss/base.scss"
+  ],
+  "script": [
+    "@Storefront",
+    "app/storefront/dist/storefront/js/act1001-frucht-theme25.js"
+  ],
+  "asset": [
+    "@Storefront",
+    "app/storefront/src/assets"
+  ],
+  "config": {
+    "blocks": {
+      "404Images": {
+        "label": {
+          "en-GB": "404 Page Images",
+          "de-DE": "404-Seiten Bilder"
+        }
+      }
+    },
+    "fields": {
+      "sw-404-bg": {
+        "label": {
+          "en-GB": "404 Background Mobile",
+          "de-DE": "404 Hintergrund Mobil"
+        },
+        "type": "media",
+        "value": "app/storefront/src/assets/images/404-bg.png",
+        "editable": true,
+        "block": "404Images",
+        "order": 100
+      },
+      "sw-404-bg-tablet": {
+        "label": {
+          "en-GB": "404 Background Tablet",
+          "de-DE": "404 Hintergrund Tablet"
+        },
+        "type": "media",
+        "value": "app/storefront/src/assets/images/404-bg-tablet.png",
+        "editable": true,
+        "block": "404Images",
+        "order": 200
+      },
+      "sw-404-bg-desktop": {
+        "label": {
+          "en-GB": "404 Background Desktop",
+          "de-DE": "404 Hintergrund Desktop"
+        },
+        "type": "media",
+        "value": "app/storefront/src/assets/images/404-bg-desktop.png",
+        "editable": true,
+        "block": "404Images",
+        "order": 300
+      },
+      "sw-404-logo": {
+        "label": {
+          "en-GB": "404 Page Logo",
+          "de-DE": "404-Seiten Logo"
+        },
+        "type": "media",
+        "value": "app/storefront/src/assets/logo/404-logo.png",
+        "editable": true,
+        "block": "404Images",
+        "order": 400
+      }
+    }
+  }
+}

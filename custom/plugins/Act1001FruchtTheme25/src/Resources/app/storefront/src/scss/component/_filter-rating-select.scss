@@ -1,0 +1,39 @@
+/*
+Filter rating select
+==============================================
+Styling for rating select filter item.
+This filter item should only be used inside a filter panel.
+*/
+
+div[data-filter-rating-select='true'] {
+    .filter-rating-select-list-item {
+        margin: 5px 32px;
+    }
+}
+
+.filter-rating-select-item-checkmark {
+    top: 0;
+    left: -25px;
+    background-color: $primary;
+}
+
+
+.filter-rating-select-item-label {
+    &:hover {
+        .filter-rating-select-item-label-text {
+            font-weight: $font-weight-normal;
+        }
+    }
+
+    .product-review-rating {
+        margin-top: -2px;
+    }
+}
+
+.product-review-rating {
+    margin-right: 0;
+}
+
+.table-striped tbody tr:nth-of-type(odd) th, .quickview-modal table tbody tr:nth-of-type(odd) th, .table-striped tbody tr:nth-of-type(odd) td, .quickview-modal table tbody tr:nth-of-type(odd) td {
+    background-color: #FBFAF6;
+}

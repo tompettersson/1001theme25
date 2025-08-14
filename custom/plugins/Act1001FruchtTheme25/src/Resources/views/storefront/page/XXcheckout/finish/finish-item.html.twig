@@ -1,0 +1,35 @@
+{# @deprecated tag:v6.5.0 - finish-item.html.twig` is deprecated. Use `storefront/component/line-item/line-item.html.twig` instead. #}
+
+{% sw_extends '@Storefront/storefront/page/checkout/finish/finish-item.html.twig' %}
+
+{% block page_checkout_item_quantity %}
+{% endblock %}
+
+{% block page_checkout_item_info %}
+    <div class="col-12 col-md-8 cart-item-info">
+        {{ block('page_checkout_item_info_inner') }}
+    </div>
+{% endblock %}
+
+{% block page_checkout_item_info_label %}
+    {% if lineItem.type == 'product' %}
+        <a href="{{ seoUrl('frontend.detail.page', {'productId': lineItem.referencedId}) }}"
+           class="cart-item-label"
+           title="{{ lineItem.label }}"
+            {% if controllerAction is same as('confirmPage') %}
+                {{ dataBsToggleAttr }}="modal"
+                data-modal-class="quickview-modal"
+                data-url="{{ path('widgets.quickview.minimal',{ 'productId': lineItem.referencedId }) }}"
+            {% endif %}
+        >
+            {{ lineItem.quantity }}x
+
+            {{ lineItem.label|u.truncate(60, '...', false) }}
+        </a>
+    {% else %}
+        <div class="cart-item-label">
+            {{ lineItem.quantity }}x
+            {{ lineItem.label|u.truncate(60, '...', false) }}
+        </div>
+    {% endif %}
+{% endblock %}

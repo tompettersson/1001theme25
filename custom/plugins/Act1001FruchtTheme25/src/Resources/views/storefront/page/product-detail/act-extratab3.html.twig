@@ -1,0 +1,127 @@
+
+{% if page.extensions.relatedBlogEntries.entries %}
+<div class="row">
+    <div class="col-12 col-lg-8">
+        {% if page.extensions.relatedBlogEntries.entries %}
+            <h2 class="headlinewithline">Aus unserem Magazin</h2>
+            <div class="blog-teaser">
+                {% for entry in page.extensions.relatedBlogEntries.entries %}
+                    <div class="blog-block">
+                        <div class="blog-text-block">
+                            <h3><a href="/magazin/{{ entry.link|replace({':': '', '!': '','"': ''}) }}" target="_blank">{{ entry.name }}</a></h3>
+                            <p>
+                                {{ entry.text }}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-12 col-lg-4">
+        <div class="video-wrapper">
+            <h2 class="detail-headline headlinewithline">
+                {% if page.product.customFields.youtube_id_2 %}
+                Videos
+                {% else %}
+                Video
+                {% endif %}
+            </h2>
+
+            <div class="splide{% if page.product.customFields.youtube_id_2 %} morethanone{% endif %}">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {% if page.product.customFields.youtube_id_1 %}
+                            {% if page.product.customFields.youtube_id_1 %}
+                            <li class="splide__slide">
+                                <iframe
+                                    width="315" height="560"
+                                    src="https://www.youtube.com/embed/{{ page.product.customFields.youtube_id_1 }}"
+                                    title="YouTube video player"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen>
+                                </iframe>
+                            </li>
+                            {% endif %}
+                            {% if page.product.customFields.youtube_id_2 %}
+                            <li class="splide__slide">
+                                <iframe
+                                        width="315" height="560"
+                                        src="https://www.youtube.com/embed/{{ page.product.customFields.youtube_id_2 }}"
+                                        title="YouTube video player"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen>
+                                </iframe>
+                            </li>
+                            {% endif %}
+                            {% if page.product.customFields.youtube_id_3 %}
+                            <li class="splide__slide">
+                                <iframe
+                                        width="315" height="560"
+                                        src="https://www.youtube.com/embed/{{ page.product.customFields.youtube_id_3 }}"
+                                        title="YouTube video player"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen>
+                                </iframe>
+                            </li>
+                            {% endif %}
+                            {% if page.product.customFields.youtube_id_4 %}
+                            <li class="splide__slide">
+                                <iframe
+                                        width="315" height="560"
+                                        src="https://www.youtube.com/embed/{{ page.product.customFields.youtube_id_4 }}"
+                                        title="YouTube video player"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen>
+                                </iframe>
+                            </li>
+                            {% endif %}
+                            {% if page.product.customFields.youtube_id_5 %}
+                            <li class="splide__slide">
+                                <iframe
+                                        width="315" height="560"
+                                        src="https://www.youtube.com/embed/{{ page.product.customFields.youtube_id_5 }}"
+                                        title="YouTube video player"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen>
+                                </iframe>
+                            </li>
+                            {% endif %}
+                        {% else  %}
+                            <li class="splide__slide">
+                                <iframe
+                                        width="315" height="560"
+                                        src="https://www.youtube.com/embed/Hx2Te84azJM"
+                                        title="YouTube video player"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen>
+                                </iframe>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+                <!-- Add the progress bar element -->
+                <div class="my-slider-progress">
+                    <div class="my-slider-progress-bar"></div>
+                </div>
+            </div>
+
+            <script>
+                var splide = new Splide( '.splide' );
+                var bar    = splide.root.querySelector( '.my-carousel-progress-bar' );
+
+                // Updates the bar width whenever the carousel moves:
+                splide.on( 'mounted move', function () {
+                    var end  = splide.Components.Controller.getEnd() + 1;
+                    var rate = Math.min( ( splide.index + 1 ) / end, 1 );
+                    bar.style.width = String( 100 * rate ) + '%';
+                } );
+
+                splide.mount();
+            </script>
+
+        </div>
+    </div>
+</div>
+{% endif %}

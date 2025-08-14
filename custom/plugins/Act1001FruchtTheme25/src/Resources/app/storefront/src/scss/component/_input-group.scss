@@ -1,0 +1,34 @@
+
+
+.header-search {
+    .input-group>.input-group-append {
+        right: 22px;
+    }
+}
+
+.badge-topseller {
+    display: none;
+}
+
+.product-box .product-action,
+.quantity-selector-group {
+    input {
+        font-size: 16px;
+    }
+    .btn {
+        &.btn-outline-light {
+            border: 1px solid #292524;
+            transition: all 0.3s ease-in-out;
+            background-color: transparent;
+            .icon {
+                color: #292524;
+            }
+            &:hover {
+                background-color: #292524;
+                .icon {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

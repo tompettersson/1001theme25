@@ -1,0 +1,132 @@
+/*
+SwagShapeTheme theme styles
+==================================================
+Contains the imports to all theme styles.
+
+The file organization follows the 7-1 pattern architecture
+https://sass-guidelin.es/#the-7-1-pattern
+*/
+/*
+ * Variables, Mixins, Functions
+ * ---------------------------- */
+@import "abstract/variables/custom";
+@import "abstract/mixins/bootstrap";
+@import "abstract/mixins/custom";
+/*
+ * Vendors
+ * ------- */
+/*
+ * Base stuff
+ * ---------- */
+@import "base/base";
+@import "base/font";
+@import "base/typography";
+
+/*
+ * Components
+ * ---------- */
+@import "component/button";
+@import "component/icon";
+@import "component/forms";
+@import "component/input-group";
+@import "component/product-box";
+@import "component/alert";
+@import "component/tables";
+@import "component/custom-forms";
+@import "component/offcanvas";
+@import "component/filter-panel";
+@import "component/dropdown";
+@import "component/quickview-modal";
+@import "component/card";
+@import "component/modal";
+// @import "component/address-editor"; // CHECKOUT/ACCOUNT RELATED
+// @import "component/payment-method"; // CHECKOUT/ACCOUNT RELATED
+@import "component/scroll-navigation/scroll-navigation";
+@import "component/tab-menu";
+@import "component/cms-block";
+@import "component/breadcrumb";
+@import "component/pagination";
+@import "component/gallery-slider";
+@import "component/base-slider";
+@import "component/cms-element";
+@import "component/filter-multi-select";
+@import "component/filter-property-select";
+@import "component/product-wishlist";
+@import "component/category-navigation";
+@import "component/filter-rating-select";
+@import "component/cms-sections";
+@import "component/quickview/quickview";
+@import "component/customized-product/customized-product";
+@import "component/basic-captcha";
+@import "component/product-slider";
+// @import "component/line-item"; // CHECKOUT/ACCOUNT RELATED (cart items)
+/*
+ * Layout-related sections
+ * ----------------------- */
+@import "layout/container";
+@import "layout/header";
+@import "layout/main-navigation";
+@import "layout/header-minimal";
+@import "layout/footer";
+@import "layout/offcanvas-cart"; // CHECKOUT/ACCOUNT RELATED
+@import "layout/top-bar";
+@import "layout/scroll-up";
+@import "layout/account-menu"; // CHECKOUT/ACCOUNT RELATED
+@import "layout/navigation-offcanvas";
+@import "layout/navigation-flyout";
+@import "layout/search-suggest";
+@import "layout/plugin";
+/*
+ * Page-specific styles
+ * -------------------- */
+@import "page/checkout/aside"; // CHECKOUT RELATED
+@import "page/checkout/cart-item"; // CHECKOUT RELATED
+@import "page/checkout/cart-item-children"; // CHECKOUT RELATED
+@import "page/checkout/checkout"; // CHECKOUT RELATED
+@import "page/checkout/register"; // CHECKOUT RELATED
+@import "page/checkout/finish"; // CHECKOUT RELATED
+@import "page/checkout/confirm"; // CHECKOUT RELATED
+@import "page/checkout/cart"; // CHECKOUT RELATED
+@import "page/error/maintenance";
+// @import "page/account/overview"; // ACCOUNT RELATED
+// @import "page/account/account"; // ACCOUNT RELATED
+// @import "page/account/order"; // ACCOUNT RELATED
+// @import "page/account/order-detail"; // ACCOUNT RELATED
+// @import "page/account/aside"; // ACCOUNT RELATED
+// @import "page/account/login"; // ACCOUNT RELATED
+// @import "page/account/register"; // ACCOUNT RELATED
+// @import "page/account/profile"; // ACCOUNT RELATED
+// @import "page/account/address"; // ACCOUNT RELATED
+// @import "page/account/order-history/order-detail-list-item"; // ACCOUNT RELATED
+// @import "page/account/payment"; // ACCOUNT RELATED
+// @import "page/account/profile/index"; // ACCOUNT RELATED
+@import "page/product-detail/product-detail";
+@import "page/product-detail/configurator";
+@import "page/product-detail/tabs";
+@import "page/product-detail/cross-selling";
+@import "page/product-detail/review";
+@import "page/wishlist/wishlist";
+@import "page/listing/listing";
+@import "page/search/search";
+/*
+ * Plugin styles
+ * -------------------- */
+@import "styles/pages/statistic";
+@import "styles/pages/dashboard";
+// @import "styles/pages/account"; // ACCOUNT RELATED
+@import "styles/pages/fastorder";
+// @import "styles/pages/order"; // CHECKOUT/ACCOUNT RELATED
+@import "styles/component/grid-container";
+@import "styles/component/headline";
+@import "styles/component/tree-node";
+@import "styles/component/table";
+@import "styles/component/tab";
+@import "styles/component/assignment-grid";
+@import "styles/component/modal";
+@import "styles/component/remote-list";
+@import "styles/component/accordion";
+@import "styles/component/upload";
+@import "styles/component/avatar";
+@import "styles/component/product-search";
+@import "styles/layout/navigation";
+@import "layout/home-slider";

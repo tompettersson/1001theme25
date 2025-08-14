@@ -1,0 +1,43 @@
+$table-radius: 24px;
+
+.table {
+    th {
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+    > :not(caption) > * > * {
+        box-shadow: none;
+    }
+}
+
+.table-striped {
+    tbody tr:nth-of-type(#{$table-striped-order}) {
+        background-color: unset;
+
+        th,
+        td {
+            background-color: $table-accent-bg;
+        }
+
+        :is(th, td):first-child {
+            &:hover {
+                @if (feature('V6_5_0_0')) {
+                    @include border-start-radius($table-radius);
+                } @else {
+                    @include border-left-radius($table-radius);
+                }
+            }
+        }
+
+        :is(th,td):last-child {
+            &:hover {
+                @if (feature('V6_5_0_0')) {
+                    @include border-end-radius($table-radius);
+                } @else {
+                    @include border-right-radius($table-radius);
+                }
+            }
+        }
+    }
+}

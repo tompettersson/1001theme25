@@ -1,0 +1,91 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_navigation_hotline %}
+{% endblock %}
+
+{% block layout_footer_navigation_column %}
+    <div class="col-md-3 footer-column js-footer-column">
+        {% block layout_footer_navigation_information_headline %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block layout_footer_navigation_information_content %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block layout_footer_navigation_information_icons %}
+    <div class="footer-column-toggle">
+        <span class="footer-plus-icon">
+            {% sw_icon 'ic-chevron-down' style {'pack' : 'shape'}  %}
+        </span>
+        <span class="footer-minus-icon">
+            {% sw_icon 'ic-chevron-up' style {'pack' : 'shape'} %}
+        </span>
+    </div>
+{% endblock %}
+
+{% block layout_footer_inner_container %}
+    <div class="container-main">
+        {% block layout_footer_newsletter_content %}
+            {% sw_include '@Storefront/storefront/layout/footer/footer-newsletter.html.twig' %}
+        {% endblock %}
+
+        {% block layout_footer_middle %}
+            <div class="footer-middle">
+                <div class="container">
+                    <div class="row">
+                        {% block layout_footer_navigation_hotline_icons %}
+                            {% sw_include '@Storefront/storefront/layout/footer/footer-links.html.twig' %}
+                        {% endblock %}
+
+                        {% block layout_footer_navigation %}
+                            <div class="footer-navigation">
+                                {{ parent() }}
+                            </div>
+                        {% endblock %}
+
+                        {% block layout_footer_payment_shipping_logos %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block layout_footer_bottom %}
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row align-items-baseline">
+                        {% block layout_footer_service_menu_content %} {% endblock %}
+
+                        {% block layout_footer_vat %}
+                            <div class="vat">{{ parent() }}</div>
+
+                            <a href="/informationen/zahlarten/" class="footer-payment-icons">
+                                <img class="payment-icon klarna" src="/media/a7/38/d5/1706878352/payment-klarna.svg"/>
+                                <img class="payment-icon visa" src="/media/63/7c/11/1706878352/payment-visa.svg"/>
+                                <img class="payment-icon mastercard" src="/media/72/10/04/1706878352/payment-mastercard.svg"/>
+                                <img class="payment-icon applepay" src="/media/a2/d7/f4/1706878352/payment-applepay.svg"/>
+                                <img class="payment-icon paypal" src="/media/62/ef/62/1706878352/payment-paypal.svg"/>
+                                <img class="payment-icon amex" src="/media/af/14/09/1706878352/payment-amex.svg"/>
+                            </a>
+
+                            {{ "general.PaymentIcons"|trans|sw_sanitize }}
+                        {% endblock %}
+
+                        {% block layout_footer_copyright %}{% endblock %}
+
+                        {# @var \Swag\PayPal\Storefront\Data\Struct\FundingEligibilityData fundingEligibilityData #}
+                        {% set fundingEligibilityData = page.footer.extensions[constant('Swag\\PayPal\\Storefront\\Data\\FundingSubscriber::FUNDING_ELIGIBILITY_EXTENSION')] %}
+
+                        {% if fundingEligibilityData %}
+                            <div data-swag-paypal-funding-eligibility="true"
+                                 data-swag-paypal-funding-eligibility-options="{{ fundingEligibilityData|json_encode }}">
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,149 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/buy-widget.html.twig' %}
+
+{% block page_product_detail_ordernumber_container %}
+
+    {% if b2bSuite %}
+        {% sw_include '@SwagB2bPlatform/storefront/_custom/product-detail/b2b-product-detail.html.twig' ignore missing %}
+    {% endif %}
+{% endblock %}
+
+  {% block page_product_detail_configurator_include %}
+
+      <script>
+          document.addEventListener("DOMContentLoaded", function () {
+              const select = document.getElementById("crossSellingSort");
+
+              select.addEventListener("change", function () {
+                  const selectedProductId = select.value;
+                  if (selectedProductId !== "default") {
+                      // Redirect to the selected product's page
+                      window.location.href = "{{ path('frontend.detail.page', {'productId': 'PRODUCT_ID'}) }}".replace('PRODUCT_ID', selectedProductId);
+                  }
+              });
+          });
+      </script>
+
+      {% if page.crossSellings.elements is not empty %}
+
+
+          <label for="crossSellingSort" class="product-detail-configurator-group-title">Sorte</label>
+          <select class="custom-select sort-select" name="sort" id="crossSellingSort">
+              <option value="{{ currentProduct.id }}" selected>{{ page.product.name }}</option>
+              {% for crossSellingElement in page.crossSellings.elements %}
+                  {% for product in crossSellingElement.products %}
+                      {% if product.translated.name !== page.product.name %}
+                          <option value="{{ product.id }}">{{ product.translated.name }}</option>
+                      {% endif %}
+                  {% endfor %}
+              {% endfor %}
+          </select>
+      {% endif %}
+
+      {{ parent() }}
+
+  {% endblock %}
+
+{% block page_product_detail_buy_inner %}
+    {% sw_include '@Storefront/storefront/page/product-detail/headline.html.twig' %}
+
+
+
+    {{ parent() }}
+
+
+    {% for product in crossSellingElement.products %}
+        <a href="{{ path('frontend.detail.page', {'productId': product.id}) }}">{{ product.name }}</a>
+    {% endfor %}
+
+    <img class="detail-payment-color" src="https://www.1001frucht.de/media/4d/db/5f/1731056169/zahlarten-bunt.png" alt="Zahlarten" style="max-width: 340px; margin-bottom: 1rem;">
+
+    <div class="contact-card">
+        <img src="/media/4f/9f/2f/1727679970/tante-emma.png" alt="Tante Emma" class="contact-card__image">
+        <div class="contact-card__info">
+            <h2 class="contact-card__title">Wir sind für Sie da!</h2>
+            <p class="contact-card__detail" href="tel:+49414637380" >Tel: 0941 4637380</p>
+            <p class="contact-card__detail">Hotline: Mo-Fr: 11:00 - 14:00 Uhr</p>
+            <p class="contact-card__detail">
+                E-Mail: <a href="mailto:info@1001frucht.de" class="contact-card__link">info@1001frucht.de</a>
+            </p>
+        </div>
+    </div>
+
+
+    {% if page.product.translated.customFields.migration_1001Frucht_product_bioprodukt %}
+        <div class="d-flex flex-row" style="margin-top: 1rem;">
+            <div style="width:130px; font-size: 14px;">Öko-Kontrollstelle:</div>
+            <div class="d-flex flex-column" style="margin-left:29px;"><img width="51px" class="mb-1 mt-1" src="/media/4c/db/1d/1686388902/Organic-Logo.svg" alt="Öko Logo"><p>DE-ÖKO-037</p></div>
+        </div>
+    {% endif %}
+
+    {% if page.product.translated.customFields.migration_1001frucht_product_ === 'bio_eu' %}
+        <div class="d-flex flex-row">
+            <div style="width:130px; font-size: 14px;">Bio-Herkunft:</div>
+            <div class="d-flex flex-column" style="margin-left:29px;"><p>EU-Landwirtschaft</p></div>
+        </div>
+    {% endif %}
+    {% if page.product.translated.customFields.migration_1001frucht_product_ === 'bio_non_eu' %}
+        <div class="d-flex flex-row">
+            <div style="width:130px; font-size: 14px;">Bio-Herkunft:</div>
+            <div class="d-flex flex-column" style="margin-left:29px;"><p>Nicht-EU-Landwirtschaft</p></div>
+        </div>
+    {% endif %}
+    {% if page.product.translated.customFields.migration_1001frucht_product_ === 'bio_eu_non_eu' %}
+        <div class="d-flex flex-row">
+            <div style="width:130px; font-size: 14px;">Bio-Herkunft:</div>
+            <div class="d-flex flex-column" style="margin-left:29px;"><p>EU-/Nicht-EU-Landwirtschaft</p></div>
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+{% block page_product_detail_tax %}
+    {{ parent() }}
+
+    {% block page_product_detail_ordernumber_container_inner %}
+        <div style="display: flex;">
+            {% if page.product.productNumber %}
+                <div class="product-detail-ordernumber-container" style="margin-right: 1rem;">
+                    <span style="font-weight: 600;">Prd. Nr.:</span>
+                    {{ block('page_product_detail_ordernumber') }}
+                </div>
+            {% endif %}
+
+            {% if page.product.ean %}
+                <div class="product-detail-ordernumber-container">
+                    <span style="font-weight: 600;">EAN:</span>
+                    {{ page.product.ean }}
+                </div>
+            {% endif %}
+        </div>
+    {% endblock %}
+{% endblock %}
+
+
+{# override this block in order to swap 2 block page_product_detail_delivery_informations and page_product_detail_reviews  #}
+{% block page_product_detail_data %}
+     {{ block('page_product_detail_data_rich_snippet_url') }}
+
+     {{ block('page_product_detail_data_rich_snippet_price_range') }}
+
+     {{ block('page_product_detail_data_rich_snippet_price_currency') }}
+
+     {{ block('page_product_detail_price') }}
+
+     {{ block('page_product_detail_tax') }}
+
+    {{ block('page_product_detail_delivery_informations') }}
+
+    {% set remoteClickOptions = {
+        selector: "#review-tab",
+        scrollToElement: true
+    } %}
+
+    {{ block('page_product_detail_reviews') }}
+
+
+{% endblock %}
+
+
+

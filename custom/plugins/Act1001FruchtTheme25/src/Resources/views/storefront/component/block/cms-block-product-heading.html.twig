@@ -1,0 +1,12 @@
+{% block block_product_heading %}
+    {% set productNameElement = block.slots.getSlot('left') %}
+    {% set manufacturerLogoElement = block.slots.getSlot('right') %}
+
+    {% block block_product_heading_product_name_element %}
+      
+    {% endblock %}
+
+    {% block block_product_heading_product_manufacturer_logo_element %}
+     
+    {% endblock %}
+{% endblock %}

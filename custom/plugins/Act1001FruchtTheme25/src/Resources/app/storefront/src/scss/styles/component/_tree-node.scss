@@ -1,0 +1,16 @@
+.node {
+    margin-left: 0;
+
+    > .is--b2b-tree-select {
+        border-left: none;
+    }
+
+    &.has--children > .node__inner .tree-label {
+        padding-left: 0;
+    }
+}
+
+.node__inner--toggle-children {
+    left: auto;
+    right: 0;
+}

@@ -1,0 +1,199 @@
+.address-main-header,
+.cart-main-header,
+.confirm-main-header,
+.checkout-aside-product-header,
+.checkout-aside-summary-header {
+    @include checkout-headline;
+
+    margin-bottom: 30px;
+}
+
+.checkout-aside-summary {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.cart-item-details-container {
+    .swag-customized-products-cart__configuration {
+        @extend .d-none;
+    }
+}
+
+.customized-checkout-hidden-image {
+    display: none;
+
+    .cart-item-info-img {
+        @extend .p-0;
+    }
+
+    @include media-breakpoint-up(md) {
+        display: flex;
+        opacity: 0;
+        height: 0;
+    }
+}
+
+.swag-customized-products-cart__configuration {
+    @extend .pt-3;
+    border-top: 1px solid $sw-border-color;
+
+    .swag-customized-products-cart__name {
+        text-transform: uppercase;
+        font-size: $font-size-base;
+        font-weight: $font-weight-bold;
+    }
+
+    .swag-customized-products-cart__items {
+        @if (feature('V6_5_0_0')) {
+            @extend .ps-3;
+        } @else {
+            @extend .pl-3;
+        }
+
+        .swag-customized-products-cart__list {
+            list-style-type: none;
+            @if (feature('V6_5_0_0')) {
+                @extend .ms-0;
+            } @else {
+                @extend .ml-0;
+            }
+        }
+    }
+
+    .swag-customized-products-cart__item-title {
+        @extend .d-flex, .justify-content-between;
+    }
+}
+
+.cart-item-row {
+    .product-wishlist {
+        @extend .mb-0;
+    }
+}
+
+.cart-item-customized-products {
+    @extend .pb-2;
+
+    .swag-customized-products-cart__title-toggle {
+        font-size: $font-size-lg;
+    }
+
+    .cart-item-row {
+        .swag-customized-products-cart__configuration {
+            .swag-customized-products-cart__items {
+                @if (feature('V6_5_0_0')) {
+                    @extend .ps-0;
+                } @else {
+                    @extend .pl-0;
+                }
+            }
+        }
+    }
+
+    .cart-item-quantity {
+        @extend .justify-content-start;
+        @if (feature('V6_5_0_0')) {
+            @extend .ps-2;
+        } @else {
+            @extend .pl-2;
+        }
+        text-align: left;
+    }
+
+    @include media-breakpoint-up(md) {
+        .cart-item-row {
+            .swag-customized-products-cart__configuration {
+                margin-left: $spacer;
+
+                .swag-customized-products-cart__items {
+                    padding-left: $spacer !important;
+                }
+            }
+        }
+    }
+}
+
+.checkout-aside {
+    margin-top: 60px;
+    padding-top: 30px;
+    .cart-item-customized-products {
+        border-left: none;
+    }
+}
+
+@if (feature('V6_5_0_0')) {
+    .cart-item-quantity-container {
+        width: 90px;
+    }
+}
+
+.cart-item, {
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.custom-control-label::before {
+    border: 1px solid #78716c;
+}
+
+.cart-item-img {
+    mix-blend-mode: multiply;
+    border: none;
+}
+
+.cart-item-ordernumber {
+    color: #111!important;
+}
+
+.shipping-method-description > p, .payment-method-description > p {
+    color: #292524;
+}
+
+.is-act-editorder .checkout-additional-wrap textarea, .is-act-confirmpage .checkout-additional-wrap textarea {
+    border-radius: 0!important;
+    line-height: 1.5;
+}
+
+.is-act-finishpage .checkout .checkout-main > .checkout-card {
+    background-color: #fff!important;
+}
+
+.cart-item .cart-item-unit-price, .cart-item .cart-item-ordernumber, .cart-item .cart-item-tax-price {
+    color: #111!important;
+}
+
+.gallery-slider-image {
+    mix-blend-mode: multiply;
+}
+
+.col-6.col-md-4.header-minimal-logo {
+    margin-top: -133px;
+}
+
+.header-minimal {
+    background-color: #FBFAF6;
+}
+
+.checkout-aside-summary, .checkout-aside-products {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.btn.account-menu-btn.header-actions-btn {
+    padding: 0 10px;
+    .icon {
+        color: #111;
+    }
+}
+
+.account-menu {
+    .dropdown {
+    z-index: 2!important;
+    }
+}
+
+.order-item-detail-footnote {
+    background-color: transparent;
+    font-size: 11px;
+    padding-left: 33px;
+}
+

@@ -1,0 +1,31 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-image-gallery.html.twig' %}
+
+{% block element_image_gallery_target_after_gallery %}
+    {{ parent() }}
+    
+    {# Properties nur auf Produktdetailseiten anzeigen #}
+    {% if isProduct and page is defined and page.product is defined and page.product.properties is defined %}
+        {% set hasEigenschaften = false %}
+        {% for property in page.product.properties %}
+            {% if property.group.translated.name === 'Eigenschaften' %}
+                {% set hasEigenschaften = true %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+        
+        {% if hasEigenschaften %}
+            <div class="product-properties" style="margin-top: 1rem;">
+                <h4>Eigenschaften:</h4>
+                <div class="property-list">
+                    {% for property in page.product.properties %}
+                        {% if property.group.translated.name === 'Eigenschaften' %}
+                            <div class="product-property" style="margin-bottom: 0.5rem; font-size: 0.9rem;">
+                                {{ property.translated.name }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}

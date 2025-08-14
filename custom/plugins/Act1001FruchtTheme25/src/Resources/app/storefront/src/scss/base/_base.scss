@@ -1,0 +1,474 @@
+/*
+Base
+==================================================
+Contains global base styles for all pages
+*/
+
+// Removed viewport detection CSS that was causing "XL" output in HTML
+
+body {
+  font-family: "Cera", "Helvetica", serif;
+  font-size: 14px;
+}
+
+.cms-element-text {
+  padding-top: 15px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.cms-element-text {
+  div,
+  h1,
+  h2,
+  h3,
+  p {
+    background-color: transparent !important;
+  }
+  a {
+    border-bottom: 1px dotted #111;
+    &:hover {
+      border-bottom: 1px solid;
+      text-decoration: none;
+    }
+  }
+}
+
+.blog-card {
+  .card-footer {
+    display: none;
+  }
+}
+
+.cms-block-blog-listing {
+  .filter-panel {
+    display: none;
+  }
+}
+
+.blog-image {
+  border-radius: 12px;
+}
+
+.cms-block-blog-detail {
+  font-size: 16px;
+
+  img {
+    mix-blend-mode: multiply;
+    display: block;
+  }
+  .blog-image-teaser {
+    mix-blend-mode: multiply;
+    display: inline-block;
+    margin-top: 60px;
+    object-fit: cover !important;
+  }
+  small {
+    font-size: 18px;
+    margin-top: 60px;
+  }
+  h1.sas-blog-detail-title {
+    font-size: 48px;
+    padding-top: 54px;
+    padding-bottom: 30px;
+    line-height: 1.1;
+  }
+  p {
+    font-size: 18px;
+  }
+  .filter-panel-wrapper {
+    display: none;
+  }
+  .sas-blog-detail-item-date {
+    display: none;
+  }
+}
+
+.blog-image,
+.blog-image-placeholder {
+  object-fit: cover;
+  width: 100%;
+  height: 195px;
+}
+
+.cms-block .cms-block-container .cms-block-container-row {
+  flex-direction: row !important;
+  justify-content: center !important;
+  .offset-md-2 {
+    margin-left: 0;
+  }
+}
+
+.form-control,
+.form-select,
+.form-check-input {
+  border: 1px solid #78716c;
+}
+
+.product-detail-review-item {
+  border-color: #b0aeaa;
+}
+
+.newsletter {
+  .cms-element-text {
+    display: flex;
+    flex-direction: column;
+    min-height: 360px;
+    h1 {
+      text-align: center;
+      margin: auto;
+      color: #fff;
+      font-size: 48px;
+      display: inline-block;
+      padding: 0 6px;
+      background-color: rgba(0, 0, 0, 0.5) !important;
+    }
+  }
+}
+
+.cms-block-form {
+  .card-title {
+    font-size: 30px;
+    font-weight: 800 !important;
+    text-transform: unset;
+    margin-top: 60px;
+  }
+  .custom-select,
+  .form-control {
+    margin-left: 15px;
+  }
+  .form-row {
+    width: 100% !important;
+  }
+}
+
+.cms-block.bg-image {
+  margin-top: 5px;
+}
+
+.cms-image-container .cms-image {
+  border-radius: 12px !important;
+}
+
+.footer-bottom {
+  .align-items-baseline {
+    position: relative;
+  }
+}
+
+.scroll-up-button {
+  bottom: 20px !important;
+}
+
+.product-detail-configurator-option-input:checked
+  + .product-detail-configurator-option-label.is-display-text {
+  background-color: #292524 !important;
+  border-color: #292524;
+  color: #fff !important;
+}
+
+.footer-payment-icons {
+  @media screen and (max-width: 991px) {
+    top: 55px;
+  }
+  position: absolute;
+  right: 0;
+  display: flex;
+  max-width: 340px;
+  .payment-icon {
+    flex: 1 1 auto;
+    margin-right: 10px;
+    max-width: calc(100% / 6 - 10px);
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+.footer-newsletter-form {
+  background-image: url(/media/0a/61/a5/1707141021/paperboy.png);
+  background-size: 209px;
+  background-position-x: 88%;
+  background-position-y: bottom;
+  background-repeat: no-repeat;
+  @media (max-width: 1400px) {
+    background-position-x: 98%;
+    background-position-y: 100%;
+    background-size: 209px;
+  }
+  @media (max-width: 1400px) and (min-width: 700px) {
+    background-position-x: 98%;
+    background-position-y: 100%;
+    background-size: 209px;
+  }
+}
+
+.footer-newsletter-form .btn {
+  font-weight: 700;
+  padding: 10px 20px;
+  transition: all 0.3s ease-in-out;
+  color: #fff;
+  border: 1px solid #fff;
+  &:hover {
+    background-color: #edc42d;
+    border: 1px solid #edc42d;
+  }
+}
+
+.splide__arrow--prev {
+  left: -50px !important;
+  background: none !important;
+}
+
+.splide__arrow--next {
+  right: -50px !important;
+  background: none !important;
+}
+
+.my-slider-progress {
+  display: none !important;
+}
+
+.splide__pagination {
+  bottom: -1.5em !important;
+}
+
+.splide {
+  max-width: 316px !important;
+}
+
+.cookie-permission-container {
+  background: #fff;
+  border-radius: 0.25rem;
+  border-top: 0 none;
+  box-shadow: 0 0.3125rem 1.25rem -0.0625rem #d9d9d9;
+  color: #666;
+  font-weight: 500;
+  margin: 1rem;
+  padding: 0.5rem;
+  text-align: left;
+  z-index: 1000;
+}
+
+@media screen and (min-width: 768px) {
+  .cookie-permission-container .cookie-permission-content {
+    flex-basis: 0;
+    flex-grow: 1;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    padding: 3rem 1rem 3rem 2rem;
+  }
+}
+
+.cookie-permission-actions {
+  .js-cookie-accept-all-button .btn {
+    background-color: #333 !important;
+  }
+  .btn {
+    text-transform: none !important;
+    font-size: 14px !important;
+  }
+  .js-cookie-configuration-button .btn {
+    background-color: transparent;
+    border: 1px solid #333 !important;
+    color: #333;
+  }
+  .js-cookie-permission-button .btn {
+    background-color: transparent;
+    border: 1px solid #333 !important;
+    color: #333;
+    display: none;
+  }
+}
+
+.form-content {
+  .row.g-2 {
+    width: 100%;
+  }
+  .custom-select,
+  .form-control {
+    margin-left: 0 !important;
+  }
+  .form-text.mt-4.mb-2 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  .required-fields-content,
+  .form-check.privacy-notice {
+    padding: 0 29px;
+  }
+  .form-check.privacy-notice {
+    margin-top: 0;
+  }
+  .btn-primary {
+    margin-left: 0 !important;
+  }
+}
+
+.top-angebote .cms-image {
+  border: 8px solid #fff;
+}
+
+.christmas-opening .section {
+  // Auf kleineren Screens stacking (bereits durch Flex-Klassen geregelt),
+  // auf größeren Screens nebeneinander:
+
+  p,
+  li {
+    font-size: 1.2rem;
+    @media (max-width: 991px) {
+      font-size: 1rem;
+    }
+  }
+
+  ul {
+    text-align: left !important;
+  }
+
+  &.py-5 {
+    @media (max-width: 991px) {
+      padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
+    }
+  }
+
+  p {
+    max-width: 800px;
+    margin: 20px auto;
+  }
+
+  .the-end {
+    width: 100% !important;
+  }
+
+  .container {
+    max-width: 1300px;
+  }
+
+  .cp-tree {
+    margin-right: 20%;
+    @media (max-width: 991px) {
+      margin-right: 0;
+      max-height: 300px;
+    }
+  }
+
+  .text-center {
+    text-align: center !important;
+    padding: 2rem;
+    @media (max-width: 991px) {
+      padding: 0.5em;
+    }
+    h1,
+    h2,
+    p {
+      text-align: center !important;
+    }
+  }
+
+  h1 {
+    font-size: 4rem;
+    line-height: 1;
+    @media (max-width: 991px) {
+      font-size: 2rem;
+    }
+  }
+
+  h2 {
+    @media (max-width: 991px) {
+      font-size: 2rem;
+    }
+  }
+
+  @media (min-width: 991px) {
+    // Beide Seiten bekommen gleich viel Platz
+    > .text-box,
+    > .image-box {
+      flex: 0 0 50%;
+      max-width: 50%;
+      padding: 1rem;
+    }
+
+    // Optional: Falls Bilder nicht zu groß werden sollen, kann man sie einschränken
+    .image-box img {
+      max-width: 80%; // oder eine feste px-Angabe, je nach Wunsch
+      height: auto;
+      max-height: 530px;
+      @media (max-width: 768px) {
+        max-height: 230px !important;
+      }
+    }
+
+    // Wenn der Text auf großen Screens eher linksbündig sein soll:
+    .text-box {
+      text-align: left;
+    }
+  }
+
+  // Optional für etwas mehr Raum zwischen den Sektionen
+  & + .section {
+    margin-top: 4rem;
+  }
+}
+
+.main-greeting {
+  background-image: url("/media/31/f5/93/1734677039/bg-star.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.bildweg {
+  .blog-image-teaser {
+    display: none;
+  }
+}
+
+.product-detail-description-text {
+  table {
+    width: 100% !important;
+  }
+  td {
+    padding: 5px 10px !important;
+  }
+  tr {
+    border-bottom: 1px solid #222 !important;
+  }
+}
+
+.footer-social_links {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.scroll-up-container {
+  display: none !important;
+}
+
+.product-price-tax-link {
+  text-transform: none !important;
+  font-size: 12px !important;
+}
+
+.product-box .product-image-wrapper {
+  background-color: transparent !important;
+}
+
+.account-register,
+.account-content,
+.checkout-container {
+  margin-top: 2rem !important;
+  padding: 2rem !important;
+  background-color: #fff !important;
+  border-radius: 12px !important;
+}
+
+.list-group-item {
+  background-color: transparent !important;
+}
+
+.form-select {
+  background-color: transparent !important;
+}

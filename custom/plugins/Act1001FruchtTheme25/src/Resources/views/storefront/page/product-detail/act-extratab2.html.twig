@@ -1,0 +1,78 @@
+
+<div class="row">
+    <div class="col-12 col-lg-4">
+        <div class="contact-card">
+            <img src="/api/placeholder/150/150" alt="Friendly woman" class="contact-card__image">
+            <div class="contact-card__info">
+                <h2 class="contact-card__title">Wir sind für Sie da!</h2>
+                <p class="contact-card__detail">Tel: 09414 637 3810</p>
+                <p class="contact-card__detail">Hotline: Mo-Fr: 11:00 - 14:00 Uhr</p>
+                <p class="contact-card__detail">
+                    E-Mail: <a href="mailto:info@1001frucht.de" class="contact-card__link">info@1001frucht.de</a>
+                </p>
+            </div>
+        </div>
+    {% set map = {
+        'Israel': 'herkunft-israel.jpg',
+        'U.S.A': 'herkunft-usa.jpg',
+        'Australien': 'herkunft-australien.jpg',
+        'Syrien': 'herkunft-syrien.jpg',
+        'Österreich': 'herkunft-oesterreich.jpg',
+        'Indien': 'herkunft-indien.jpg',
+        'Marokko': 'herkunft-marokko.jpg',
+        'Kolombien': 'herkunft-kolumbien.jpg',
+        'Schweiz': 'herkunft-schweiz.jpg',
+        'Thailand': 'herkunft-thailand.jpg',
+        'Griechenland': 'herkunft-griechenland.jpg',
+        'Ägypten': 'herkunft-aegypten.jpg',
+        'Regensburg': 'herkunft-deutschland.jpg',
+        'Pakistan': 'herkunft-pakistan.jpg',
+        'Bulgarien': 'herkunft-bulgarien.jpg',
+        'Türkei': 'herkunft-tuerkei.jpg',
+        'China': 'herkunft-china.jpg',
+        'Tunesien': 'herkunft-tunesien.jpg',
+        'Deutschland': 'herkunft-deutschland.jpg',
+        'Philippinen': 'herkunft-philippinen.jpg',
+        'Kolumbien': 'herkunft-kolumbien.jpg',
+        'Tibet': 'herkunft-tibet.jpg',
+        'Sri Lanka': 'herkunft-sri-lanka.jpg',
+        'Brasilien': 'herkunft-brasilien.jpg',
+        'Frankreich': 'herkunft-frankreich.jpg',
+        'Ungarn': 'herkunft-ungarn.jpg',
+        'Spanien': 'herkunft-spanien.jpg',
+        'Äthiopien': 'herkunft-aethiopien.jpg',
+        'Peru': 'herkunft-peru.jpg',
+        'Mexiko': 'herkunft-mexiko.jpg',
+        'Afghanistan': 'herkunft-afghanistan.jpg',
+        'Vietnam': 'herkunft-vietnam.jpg',
+        'Italien': 'herkunft-italien.jpg',
+        'Niederlande': 'herkunft-niederlande.jpg',
+        'Südafrika': 'herkunft-suedafrika.jpg',
+        'Iran': 'herkunft-iran.jpg',
+        'Japan': 'herkunft-japan.jpg',
+        'Guatemala': 'herkunft-guatemala.jpg',
+        'Bolivien': 'herkunft-bolivien.jpg',
+        'Großbritannien': 'herkunft-grossbritannien.jpg',
+        'Burkina Faso': 'herkunft-burkina faso.jpg'
+    } %}
+
+    {% for property in page.product.properties %}
+
+        {% if property.group.name == 'Bezugsquelle' %}
+            <h2 class="headlinewithline">Herkunft: {{ property.name }}</h2>
+            <p class="max-w-sm">{{ page.product.customFields.migration_1001Frucht_product_attr13|trans|sw_sanitize }}</p>
+            <img class="origin-map mappi" src="/media/maps/{{ map[property.name] }}" alt="{{ property.name }}">
+        {% endif %}
+
+    {% endfor %}
+
+</div>
+</div>
+
+<div class="row">
+    <div class="known">
+        <div class="container">
+            <img src="/media/d8/27/9c/1708444427/bekanntaus.gif" alt="Bekannt aus ...">
+        </div>
+    </div>
+</div>

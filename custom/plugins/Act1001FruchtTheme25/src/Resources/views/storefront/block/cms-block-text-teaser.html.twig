@@ -1,0 +1,376 @@
+{% extends '@Storefront/storefront/block/cms-block-text-teaser.html.twig' %}
+
+{# Only override the blocks you want to customize #}
+{% block block_text_teaser_inner %}
+<div class="product-detail-description">
+    <div class="row">
+        <div class="col-12 col-lg-7">
+             <div class="product-detail-description-text"
+                  itemprop="description">
+                 <span class="detail-headline headlinewithline">Beschreibung</span>
+                 {% if page.product.customFields.migration_1001Frucht_product_uniquecontent|trans|sw_sanitize %}
+                 {{ page.product.customFields.migration_1001Frucht_product_uniquecontent|trans|sw_sanitize }}
+                     {% else %}
+                     {{ page.product.description|trans|sw_sanitize }}
+                 {%  endif %}
+
+                 {% if page.product.customFields.migration_1001Frucht_product_attr9|trans|sw_sanitize %}
+                     <h2>Tipp</h2>
+                     <p>{{ page.product.customFields.migration_1001Frucht_product_attr9|trans|sw_sanitize }}</p>
+                 {% endif %}
+
+             </div>
+            <div class="infobox-container">
+                <div class="infobox">
+                    <h2>Hersteller</h2>
+                    <p><b>1001 Frucht</b></p><p>Mohamad&nbsp;Ali Morady<br>
+                        Wernberger Str. 4a<br>
+                        93057 Regensburg</p>
+
+                    <p>Telefon: 0941/20827550<br>
+                        Mail: info@1001frucht.de</p>
+                </div>
+                <div class="infobox">
+                    <h2>Lagerung</h2>
+                    <p>
+                        Bitte öffnen Sie Ihre Bestellung unmittelbar nach dem Erhalt und überprüfen Sie diese auf Vollständigkeit. Anschließend öffnen Sie jedes Produkt, überprüfen Sie die Qualität und lagern Sie es ordnungsgemäß in luftdichten Behältern aus Tupperware und Glas kühl (bei Datteln 4-6 Grad).
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 col-lg-5">
+            {% if page.product.customFields.migration_1001Frucht_product_kj %}
+
+                <table itemprop="nutrition" class="table-ingredients small-edition" style="margin-top: 1rem;">
+                <thead>
+                <tr>
+                    <th><span class="nutrition-title--label">Durchschnittliche Nährwerte</span></th>
+                    <th><span class="nutrition-title--value">pro 100 g</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><span class="nutrition--label nutrition--energy">Brennwert (in kj/kcal)</span></td>
+                    <td><span class="nutrition--value nutrition--energy">{{ page.product.customFields.migration_1001Frucht_product_kj }} / {{ page.product.customFields.migration_1001Frucht_product_kcal }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="nutrition--label nutrition--fat">Fett</span></td>
+                    <td><span class="nutrition--value nutrition--fat">{{ page.product.customFields.migration_1001Frucht_product_fett }}</span></td>
+                </tr>
+                <tr>
+                    <td><span class="nutrition--label nutrition--saturates">&nbsp; &nbsp;davon gesättigte
+Fettsäuren</span></td>
+                    <td><span class="nutrition--value nutrition--saturates">{{ page.product.customFields.migration_1001Frucht_product_ges_fettsaeuren }}</span></td>
+                </tr>
+                <tr>
+                    <td><span class="nutrition--label nutrition--carbohydrate">Kohlenhydrate</span></td>
+                    <td><span class="nutrition--value nutrition--carbohydrate">{{ page.product.customFields.migration_1001Frucht_product_kohlenhydrate }}</span></td>
+                </tr>
+                <tr>
+                    <td><span class="nutrition--label nutrition--sugars">&nbsp; &nbsp;davon Zucker</span></td>
+                    <td><span class="nutrition--value nutrition--sugars">{{ page.product.customFields.migration_1001Frucht_product_nw_zucker }}</span></td>
+                </tr>
+                <tr>
+                    <td><span class="nutrition--label nutrition--fibre">Ballaststoffe</span></td>
+                    <td><span class="nutrition--value nutrition--fibre">{{ page.product.customFields.migration_1001Frucht_product_ballaststoffe }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="nutrition--label nutrition--protein">Eiweiß</span></td>
+                    <td><span class="nutrition--value nutrition--protein">{{ page.product.customFields.migration_1001Frucht_product_eiweiss }}</span></td>
+                </tr>
+                <tr>
+                    <td><span class="nutrition--label nutrition--salt">Salz</span></td>
+                    <td><span class="nutrition--value nutrition--salt">{{ page.product.customFields.migration_1001Frucht_product_salzgehalt }}</span></td>
+                </tr>
+                </tbody>
+            </table>
+            {% endif %}
+            {% if page.product.customFields.migration_1001Frucht_product_attr1 %}
+                <h4>Zutaten</h4>
+                <p>{{  page.product.customFields.migration_1001Frucht_product_attr1 }}</p>
+            {% endif %}
+            
+            {# Allergenhinweis nur anzeigen, wenn Produkt nicht Vitamin/Magnesium enthält #}
+            {% set isVitamin = false %}
+            {% if page.product.translated.name|lower matches '/vitamin|magnesium/' %}
+                {% set isVitamin = true %}
+            {% endif %}
+
+            {% if not isVitamin %}
+                <h4>Allergenhinweis</h4>
+                <p>
+                    Kann Spuren von Gluten, Soja, Nüssen, Mandeln, Erdnüssen, Milch (Laktose), Sesam und Schwefeldioxid (Sulfite) enthalten.
+                </p>
+            {% endif %}
+
+            {% if page.product.customFields.migration_1001Frucht_product_attr12|trans|sw_sanitize %}
+
+
+
+            {% endif %}
+            {% set map = {
+                'Israel': 'herkunft-israel.jpg',
+                'U.S.A': 'herkunft-usa.jpg',
+                'Australien': 'herkunft-australien.jpg',
+                'Syrien': 'herkunft-syrien.jpg',
+                'Österreich': 'herkunft-oesterreich.jpg',
+                'Indien': 'herkunft-indien.jpg',
+                'Marokko': 'herkunft-marokko.jpg',
+                'Kolumbien': 'herkunft-kolumbien.jpg',
+                'Schweiz': 'herkunft-schweiz.jpg',
+                'Thailand': 'herkunft-thailand.jpg',
+                'Griechenland': 'herkunft-griechenland.jpg',
+                'Ägypten': 'herkunft-aegypten.jpg',
+                'Regensburg': 'herkunft-deutschland.jpg',
+                'Pakistan': 'herkunft-pakistan.jpg',
+                'Bulgarien': 'herkunft-bulgarien.jpg',
+                'Türkei': 'herkunft-tuerkei.jpg',
+                'China': 'herkunft-china.jpg',
+                'Tunesien': 'herkunft-tunesien.jpg',
+                'Deutschland': 'herkunft-deutschland.jpg',
+                'Philippinen': 'herkunft-philippinen.jpg',
+                'Kolumbien': 'herkunft-kolumbien.jpg',
+                'Tibet': 'herkunft-tibet.jpg',
+                'Sri Lanka': 'herkunft-sri-lanka.jpg',
+                'Brasilien': 'herkunft-brasilien.jpg', 
+                'Frankreich': 'herkunft-frankreich.jpg',
+                'Ungarn': 'herkunft-ungarn.jpg',
+                'Spanien': 'herkunft-spanien.jpg',
+                'Äthiopien': 'herkunft-aethiopien.jpg',
+                'Peru': 'herkunft-peru.jpg',
+                'Mexiko': 'herkunft-mexiko.jpg',
+                'Afghanistan': 'herkunft-afghanistan.jpg',
+                'Vietnam': 'herkunft-vietnam.jpg',
+                'Italien': 'herkunft-italien.jpg',
+                'Niederlande': 'herkunft-niederlande.jpg',
+                'Südafrika': 'herkunft-suedafrika.jpg',
+                'Iran': 'herkunft-iran.jpg',
+                'Japan': 'herkunft-japan.jpg',
+                'Guatemala': 'herkunft-guatemala.jpg',
+                'Bolivien': 'herkunft-bolivien.jpg',
+                'Großbritannien': 'herkunft-grossbritannien.jpg',
+                'Burkina Faso': 'herkunft-burkina-faso.jpg',
+                'Lesotho': 'herkunft-lesotho.jpg',
+                'EU': 'herkunft-eu.jpg',
+                'Diverse': 'herkunft-weltkarte.jpg',
+                'Polen': 'herkunft-polen.jpg',
+                'Kanada': 'herkunft-kanada.jpg',
+                'Indonesien': 'herkunft-indonesien.jpg',
+            } %}
+
+            {% for property in page.product.properties %}
+
+                {% if property.group.name == 'Bezugsquelle' %}
+                    <h2 class="headlinewithline">Herkunft: {{ property.name }}</h2>
+                    <p class="max-w-sm">{{ page.product.customFields.migration_1001Frucht_product_attr13|trans|sw_sanitize }}</p>
+                    <img class="origin-map mappi" src="/media/maps/{{ map[property.name] }}" alt="{{ property.name }}">
+                {% endif %}
+
+            {% endfor %}
+
+
+        </div>
+    </div>
+    <div class="known">
+        <div class="container">
+            <img src="/media/d8/27/9c/1708444427/bekanntaus.gif" alt="Bekannt aus ...">
+        </div>
+    </div>
+</div>
+
+{% set reviewsPerListPage = config('core.listing.reviewsPerPage') %}
+{% if reviewsPerListPage <= 0 %}
+    {% set reviewsPerListPage = 10 %}
+{% endif %}
+
+{% set currentListPage = reviews.page %}
+{% set productReviewCount = reviews.total %}
+{% set totalReviewCount = reviews.matrix.totalReviewCount %}
+
+{% if totalReviewCount > 0 %}
+    {% set productAvgRating = reviews.matrix.averageRating|round(2, 'common') %}
+{% endif %}
+
+{% set totalReviewsInCurrentLanguage = reviews.totalReviewsInCurrentLanguage ?: productReviewCount %}
+{% set numberOfReviewsNotInCurrentLanguage = productReviewCount - totalReviewsInCurrentLanguage %}
+
+<div class="product-detail-review tab-pane-container">
+    <div class="row product-detail-review-content js-review-container">
+        <div class="col product-detail-review-main js-review-content">
+            {# Alert messages #}
+            {% if ratingSuccess == 1 %}
+                {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                    type: 'success',
+                    content: 'detail.reviewFormSuccessAlert'|trans|sw_sanitize
+                } %}
+            {% elseif ratingSuccess == 2 %}
+                {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                    type: 'success',
+                    content: 'detail.reviewFormSuccessUpdateAlert'|trans|sw_sanitize
+                } %}
+            {% elseif ratingSuccess == -1 %}
+                {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                    type: 'danger',
+                    content: 'detail.reviewFormErrorAlert'|trans|sw_sanitize
+                } %}
+            {% endif %}
+
+            {# Review form container #}
+            <div class="collapse multi-collapse{% if ratingSuccess == -1 %} show{% endif %}" id="review-form">
+                {% if context.customer and not context.customer.guest %}
+                    <div class="product-detail-review-form">
+                        {% sw_include '@Storefront/storefront/component/review/review-form.html.twig' %}
+                    </div>
+                {% else %}
+                    <div class="product-detail-review-login">
+                        {% sw_include '@Storefront/storefront/component/review/review-login.html.twig' %}
+                    </div>
+                {% endif %}
+            </div>
+
+            {# Review list container #}
+            <div id="review-list" class="collapse multi-collapse product-detail-review-list{% if ratingSuccess != -1 %} show{% endif %}">
+                {% set formAjaxSubmitOptions = {
+                    replaceSelectors: ['.js-review-container'],
+                    submitOnChange: true
+                } %}
+
+                {# Review actions (language filter, sorting) #}
+                <div class="row align-items-center product-detail-review-actions">
+                    {# Language filter #}
+                    <div class="col product-detail-review-language">
+                        <form class="product-detail-review-language-form"
+                              action="{{ path('frontend.product.reviews', { productId: reviews.productId, parentId: reviews.parentId }) }}"
+                              method="post"
+                              data-form-ajax-submit="true"
+                              data-form-ajax-submit-options="{{ formAjaxSubmitOptions|json_encode }}">
+
+                            {% if app.request.get('sort') %}
+                                <input type="hidden" name="sort" value="{{ app.request.get('sort') }}">
+                            {% endif %}
+
+                            {% if app.request.get('points') %}
+                                {% for points in app.request.get('points') %}
+                                    <input type="hidden" name="points[]" value="{{ points }}">
+                                {% endfor %}
+                            {% endif %}
+
+                            <div class="form-check form-switch">
+                                <input type="checkbox"
+                                       class="form-check-input"
+                                       id="showForeignReviews"
+                                       value="filter-language"
+                                       name="language"
+                                       {% if app.request.get('language') %}checked="checked"{% endif %}
+                                       {% if numberOfReviewsNotInCurrentLanguage is same as(0) and not app.request.get('language') %}disabled="disabled"{% endif %}>
+                                <label class="custom-control-label form-label" for="showForeignReviews">
+                                    <small>{{ 'detail.reviewLanguageFilterLabel'|trans|sw_sanitize }}</small>
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+
+                    {# Sort by #}
+                    {% if productReviewCount > 0 %}
+                        <div class="col-12 col-md-auto product-detail-review-sortby">
+                            <form class="form-inline product-detail-review-sortby-form"
+                                  action="{{ path('frontend.product.reviews', { productId: reviews.productId, parentId: reviews.parentId }) }}"
+                                  method="post"
+                                  data-form-ajax-submit="true"
+                                  data-form-ajax-submit-options="{{ formAjaxSubmitOptions|json_encode }}">
+
+                                {% if app.request.get('language') %}
+                                    <input type="hidden" name="language" value="{{ app.request.get('language') }}">
+                                {% endif %}
+
+                                {% if app.request.get('points') %}
+                                    {% for points in app.request.get('points') %}
+                                        <input type="hidden" name="points[]" value="{{ points }}">
+                                    {% endfor %}
+                                {% endif %}
+
+                                <label class="form-label product-detail-review-sortby-label" for="reviewsSortby">
+                                    <small>{{ 'detail.reviewSortLabel'|trans|sw_sanitize }}</small>
+                                </label>
+
+                                <select class="form-select form-select-sm" name="sort" id="reviewsSortby">
+                                    <option value="createdAt"{% if reviews.criteria.sorting.0.field == 'createdAt' %} selected{% endif %}>
+                                        {{ 'detail.reviewSortNewLabel'|trans|sw_sanitize }}
+                                    </option>
+                                    <option value="points"{% if reviews.criteria.sorting.0.field == 'points' %} selected{% endif %}>
+                                        {{ 'detail.reviewSortTopRatedLabel'|trans|sw_sanitize }}
+                                    </option>
+                                </select>
+                            </form>
+                        </div>
+                    {% endif %}
+                </div>
+
+                {# Review counter #}
+                <hr/>
+                <p class="text-right product-detail-review-counter">
+                    {% if (productReviewCount > 1 and productReviewCount > reviewsPerListPage) %}
+                        <small><strong>{{ currentListPage }}</strong> - <strong>{{ reviewsPerListPage }}</strong> {{ 'detail.reviewCountBefore'|trans|sw_sanitize }} <strong>{{ productReviewCount }}</strong> {{ 'detail.reviewCountAfter'|trans({'%count%': productReviewCount })|sw_sanitize }}</small>
+                    {% elseif productReviewCount > 0 %}
+                        <small><strong>{{ productReviewCount }}</strong> {{ 'detail.reviewCountAfter'|trans({'%count%': productReviewCount })|sw_sanitize }}</small>
+                    {% endif %}
+                </p>
+
+                {# Review list content #}
+                {% for review in reviews %}
+                    <div class="product-detail-review-list-content">
+                        {% sw_include '@Storefront/storefront/component/review/review-item.html.twig' %}
+                    </div>
+                {% endfor %}
+
+                {# Pagination #}
+                {% set totalPages = (productReviewCount/reviewsPerListPage)|round(0,'ceil') %}
+                {% if totalPages > 1 %}
+                    <div class="product-detail-review-pagination">
+                        <form class="product-detail-review-pagination-form"
+                              action="{{ path('frontend.product.reviews', { productId: reviews.productId, parentId: reviews.parentId }) }}"
+                              method="post"
+                              data-form-ajax-submit="true"
+                              data-form-ajax-submit-options="{{ formAjaxSubmitOptions|json_encode }}"
+                              data-form-ajax-pagination="true">
+
+                            <input type="hidden" name="p" value="{{ currentListPage }}">
+
+                            {% if app.request.get('language') %}
+                                <input type="hidden" name="language" value="{{ app.request.get('language') }}">
+                            {% endif %}
+
+                            {% if app.request.get('sort') %}
+                                <input type="hidden" name="sort" value="{{ app.request.get('sort') }}">
+                            {% endif %}
+
+                            {% if app.request.get('points') %}
+                                {% for points in app.request.get('points') %}
+                                    <input type="hidden" name="points[]" value="{{ points }}">
+                                {% endfor %}
+                            {% endif %}
+
+                            {% sw_include '@Storefront/storefront/utilities/pagination.html.twig' with {
+                                page: currentListPage,
+                                pages: totalPages,
+                                entities: reviews
+                            } %}
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        {# Review sidebar widget #}
+        <div class="col-12 col-lg-5 product-detail-review-widget-wrapper">
+            {% sw_include '@Storefront/storefront/component/review/review-widget.html.twig' %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

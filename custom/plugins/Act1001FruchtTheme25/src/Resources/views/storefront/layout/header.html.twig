@@ -1,0 +1,6 @@
+{% sw_extends '@Storefront/storefront/layout/header.html.twig' %}
+
+{# Remove container wrapper to allow full-width header #}
+{% block base_header_inner %}
+    {% sw_include '@Storefront/storefront/layout/header/header.html.twig' %}
+{% endblock %}

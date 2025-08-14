@@ -1,0 +1,9 @@
+{% sw_extends '@Storefront/storefront/component/pseudo-modal.html.twig' %}
+
+{% block product_detail_zoom_modal_close_button_content %}
+    {% if not feature('v6.5.0.0') %}
+        <span aria-hidden="true">
+            {% sw_icon 'x' style { 'pack': 'solid', 'size': 'sm' } %}
+        </span>
+    {% endif %}
+{% endblock %}
