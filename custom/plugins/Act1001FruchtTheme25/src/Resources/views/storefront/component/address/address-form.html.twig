@@ -1,0 +1,66 @@
+{% sw_extends '@Storefront/storefront/component/address/address-form.html.twig' %}
+
+
+{% block component_address_form_country %}
+<div class="form-group col-md-6">
+    {% set germanyCountryId = 'fd1b7b6803e64f059ee2a5ee121ba4d1' %}
+    {% set initialCountryId = null %}
+
+    {% if data.get('countryId') %}
+        {% set initialCountryId = data.get('countryId') %}
+    {% elseif page.countries|length == 1 and disableNonShippableCountries is not defined %}
+        {% set initialCountryId = (page.countries|first).id %}
+    {% else %}
+        {# Set Germany as default if no country is selected #}
+        {% set initialCountryId = germanyCountryId %}
+    {% endif %}
+
+    {% if formViolations.getViolations("/countryId") is not empty %}
+        {% set violationPath = "/countryId" %}
+    {% elseif formViolations.getViolations("/#{prefix}/countryId") is not empty %}
+        {% set violationPath = "/#{prefix}/countryId" %}
+    {% endif %}
+
+    {% block component_address_form_country_label %}
+        <label class="form-label"
+                for="{{ idPrefix ~ prefix }}AddressCountry">
+            {{ "address.countryLabel"|trans|sw_sanitize }}{{ "general.required"|trans|sw_sanitize }}
+        </label>
+    {% endblock %}
+
+    {% block component_address_form_country_select %}
+        <select class="country-select form-select{% if violationPath %} is-invalid{% endif %}"
+                id="{{ idPrefix ~ prefix }}AddressCountry"
+                name="{{ prefix }}[countryId]"
+                required="required"
+                data-initial-country-id="{{ initialCountryId }}"
+                data-address-type="{{ prefix }}">
+            {% if not initialCountryId %}
+                <option disabled="disabled"
+                        value=""
+                        selected="selected">
+                    {{ "address.countryPlaceholder"|trans|sw_sanitize }}
+                </option>
+            {% endif %}
+            {% for country in page.countries %}
+                {% if country.active %}
+                    <option {% if country.id == initialCountryId %}selected="selected"{% endif %}
+                            value="{{ country.id }}"
+                            data-zipcode-required="{{ country.postalCodeRequired }}"
+                            data-vat-id-required="{{ country.vatIdRequired }}"
+                            {% if feature('FEATURE_NEXT_15707') and country.states %}data-state-required="true"{% endif %}
+                            {% if not feature('FEATURE_NEXT_15707') and country.forceStateInRegistration %}data-state-required="true"{% endif %}>
+                        {{ country.translated.name }}
+                    </option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    {% endblock %}
+
+    {% block component_address_form_country_error %}
+        {% if violationPath %}
+            {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' %}
+        {% endif %}
+    {% endblock %}
+</div>
+{% endblock %}
