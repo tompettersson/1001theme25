@@ -1,0 +1,23 @@
+{
+  "name": "swag/theme-skeleton",
+  "description": "Theme skeleton plugin",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Actualize"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Act1001FruchtTheme25\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "Act1001FruchtTheme25\\Act1001FruchtTheme25",
+    "label": {
+      "de-DE": "Theme Act1001FruchtTheme25 plugin",
+      "en-GB": "Theme Act1001FruchtTheme25 plugin"
+    }
+  }
+}
