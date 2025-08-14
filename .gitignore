@@ -1,0 +1,55 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+dist/
+build/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+
+# Shopware specific
+/var/cache/
+/var/log/
+/public/theme/
+/public/bundles/
+/public/media/
+/public/thumbnail/
+/public/sitemap/
+
+# Archives and backups
+*.tar.gz
+*.zip
+*.rar
+*.7z
+*backup*
+*_backup
+*.bak
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+tmp/
+temp/
+.tmp/
